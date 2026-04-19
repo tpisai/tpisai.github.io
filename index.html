@@ -93,7 +93,12 @@
                 <td>Etiqueta para insertar una línea horizontal</td>
             </tr>
         </table>
-
+        
+        <p><b>Esta es una tabla creada en HTML</b></p>
+        <p><i>¡Espero que te guste!</i></p>
+        <p><mark>Esta es una celda resaltada</mark></p>
+        <hr>
+        <h2>Fomrularios en HMTL5</h2>
         <form action="/usuarios" method="post">
             <label for="Apellidos">Apellidos:</label>
             <input type="text" name="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos" size="20">
@@ -105,9 +110,68 @@
             <button type="reset">Limpiar</button>
         </form>
 
-        <p><b>Esta es una tabla creada en HTML</b></p>
-        <p><i>¡Espero que te guste!</i></p>
-        <p><mark>Esta es una celda resaltada</mark></p>
+        <form action="Validar_Datos">   
+            usuario: <br>
+            <input type="text" name="usuario" value="">
+            <br>
+            contraseña: <br>
+            <input type="password" name="contraseña" value="">
+            <br><br>
+            <input type="submit" value="Ingresar al Sistema">
+            <input type="reset" value="Limpiar">
+            <br><br>
+            Nombre del Curso: <br>
+            <input type="text" name="curso" value="Matematicas"><br>
+            Turno a Elegir: <br>
+            <input type="radio" name="turno" value="mañana"> Mañana<br>
+            <input type="radio" name="turno" value="tarde"> Tarde<br>
+            <input type="radio" name="turno" value="noche"> Noche<br>
+            <br>
+            Fecha de Registro: <br> 
+            <input type="date" name="fecha_registro">
+             <br><br>
+            boton para Programar: <br>
+            <button type="button" onclick="alert('¡Hola! Has hecho clic en el botón Programar, con el alert muestra este mensaje.')">Programar</button>
+            <br><br>
+            Uso de la Etiqueta Select: <br>
+            <select name="Marcas de Autos">
+                <option value="Toyota">Toyota</option>
+                <option value="Honda">Honda</option>
+                <option value="Ford">Ford</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Nissan"selected>Nissan</option>
+            </select>
+             <br><br>
+             <input type="submit" value="Enviar Datos">
+             <input type="reset" value="Limpiar Formulario">
+        </form>
+        <br><br>
+        <br><br>
+        <form action="Campos de Entrada">   
+            <label>Lista de Universidades</label>
+            <input type="text" list="Universidades" name="universidad" placeholder="Seleccione una universidad">
+            <datalist id="Universidades">
+                <option value="Universidad Nacional de Colombia">
+                <option value="Universidad de los Andes">
+                <option value="Pontificia Universidad Javeriana">
+                <option value="Universidad del Rosario">
+                <option value="Universidad Externado de Colombia">
+                    </datalist>
+                    <br><br>
+                <input type="submit" value="Enviar Datos">
+                <br><br>
+            Textarea: <br>
+            <textarea name="comentarios" rows="4" cols="50" placeholder="Ingrese sus comentarios" 
+            maxlength="50" autofocus>Si hace falta su Universidad, por favor escribala aqui.
+            </textarea>
+                </form> 
+                <form action="Registrar Archivo">
+                    <label for="archivo">Subir Archivo:</label>
+                    <input type="file" name="portada" size="30" value="Examinar..">
+                    <br><br>
+                </form>
+
+        <hr>
         <aside>
             <h2>Información adicional</h2>
             <p>HTML es el lenguaje de marcado utilizado para crear páginas web. Es fundamental para el desarrollo web y se utiliza junto con CSS y JavaScript para crear sitios web interactivos y atractivos.</p>
@@ -125,7 +189,7 @@
 
     </body>
     <footer>
-        <p>&copy; 2024 Mi primera Web. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Mi primera Web. Todos los derechos reservados.</p>
     </footer>
 
 </html>
