@@ -1,120 +1,128 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar - Hostal Yetsi</title>
-</head>
-<body>
-
-    <header>
-        <div style="display: flex; align-items: baseline; gap: 10px;">
-            <h1>Hostal Yetsi</h1>
-            <span>Finaliza tu Reserva</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="habitaciones.html">Habitaciones</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <hr>
-
-    <main>
-        <section>
+<main>
+    <!-- TODO DEBE IR DENTRO DE ESTE FORM PARA QUE LOS BOTONES FUNCIONEN -->
+    <form action="#" method="post" class="formulario">
+        
+        <!-- 1. NUEVO: COMBO BOX DE CIUDAD -->
+        <section style="text-align: center; background-color: #f0f0f0; padding: 20px; border-radius: 10px;">
             <h2 class="formulario_titulo">Lugar de su Estancia</h2>
-            <label for="ciudad-destino">¿A qué ciudad viaja?:</label>
-            <select name="ciudad" id="ciudad-destino" required>
-                <option value="">-- Seleccione una ciudad --</option>
-                <option value="arequipa">Arequipa (Sede Central)</option>
-                <option value="ica">Ica (Sede Huacachina)</option>
-                <option value="lima">Lima (Sede Miraflores)</option>
-                <option value="cusco">Cusco (Sede Centro Histórico)</option>
+            <label><b>¿A qué ciudad viaja?:</b></label>
+            <select name="ciudad_destino" required style="padding: 10px; font-size: 1em;">
+                <option value="">-- Seleccione una sede --</option>
+                <option value="arequipa">Arequipa</option>
+                <option value="ica">Ica</option>
+                <option value="lima">Lima</option>
+                <option value="cusco">Cusco</option>
             </select>
         </section>
-        <br>
-        <!-- SECCIÓN: SISTEMA DE RESERVA DE HABITACIONES -->
+
+        <hr>
+
+        <!-- 2. TU SECCIÓN DE HABITACIONES (Recuperada íntegra) -->
         <section id="inventario-completo">
-            <h2>Seleccione su Habitación (1 al 9)</h2>
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <h2 class="formulario_titulo">Reserva de Habitaciones (1 al 9)</h2>
+            <p style="text-align:center;">Seleccione su habitación según categoría y tarifa nocturna:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 15px;">
                 
                 <!-- CATEGORÍA VIP -->
-                <div style="border: 2px solid gold; padding: 15px; border-radius: 10px; flex: 1; min-width: 250px;">
+                <div style="border: 2px solid gold; padding: 15px; border-radius: 10px; background-color: #fffdf0;">
                     <h3>💎 Nivel VIP (Piso 3)</h3>
-                    <p>Tarifa: <b>S/ 250.00</b></p>
+                    <p>Tarifa: <b>S/ 250.00 por noche</b></p>
+                    <p><small>Incluye: Hidromasaje, Smart TV 65", Minibar libre y Desayuno Buffet.</small></p>
                     <label><input type="radio" name="habitacion" value="7"> Cuarto 7</label><br>
                     <label><input type="radio" name="habitacion" value="8"> Cuarto 8</label><br>
                     <label><input type="radio" name="habitacion" value="9"> Cuarto 9</label>
+                    <p><mark>Calificación: VIP</mark></p>
                 </div>
 
                 <!-- CATEGORÍA ALTA -->
-                <div style="border: 1px solid blue; padding: 15px; border-radius: 10px; flex: 1; min-width: 250px;">
+                <div style="border: 1px solid #2980b9; padding: 15px; border-radius: 10px; background-color: #f0f7ff;">
                     <h3>⭐ Nivel Ejecutivo (Piso 2)</h3>
-                    <p>Tarifa: <b>S/ 150.00</b></p>
+                    <p>Tarifa: <b>S/ 150.00 por noche</b></p>
+                    <p><small>Incluye: Cama Queen, Aire Acondicionado y Escritorio de trabajo.</small></p>
                     <label><input type="radio" name="habitacion" value="4"> Cuarto 4</label><br>
                     <label><input type="radio" name="habitacion" value="5"> Cuarto 5</label><br>
                     <label><input type="radio" name="habitacion" value="6"> Cuarto 6</label>
+                    <p><mark>Calificación: Alta</mark></p>
                 </div>
 
                 <!-- CATEGORÍA MEDIA -->
-                <div style="border: 1px solid gray; padding: 15px; border-radius: 10px; flex: 1; min-width: 250px;">
+                <div style="border: 1px solid #7f8c8d; padding: 15px; border-radius: 10px; background-color: #f9f9f9;">
                     <h3>🏠 Nivel Estándar (Piso 1)</h3>
-                    <p>Tarifa: <b>S/ 80.00</b></p>
+                    <p>Tarifa: <b>S/ 80.00 por noche</b></p>
+                    <p><small>Incluye: Cama Matrimonial, Wifi de alta velocidad y Baño privado.</small></p>
                     <label><input type="radio" name="habitacion" value="1"> Cuarto 1</label><br>
                     <label><input type="radio" name="habitacion" value="2" checked> Cuarto 2</label><br>
                     <label><input type="radio" name="habitacion" value="3"> Cuarto 3</label>
+                    <p><mark>Calificación: Media</mark></p>
                 </div>
             </div>
         </section>
 
-        <!-- FORMULARIO DE REGISTRO -->
-        <section id="formulario-registro-total">
-            <form action="#" method="post">
-                <h2>Datos del Huésped Principal</h2>
-                
-                <label>Tipo de Documento:</label>
-                <select name="tipo_doc">
-                    <option value="dni">DNI</option>
-                    <option value="ce">Carnet de Extranjería</option>
-                    <option value="pasaporte">Pasaporte</option>
-                </select>
-                
-                <label>Número:</label>
-                <input type="text" name="nro_doc" required>
+        <hr>
 
-                <h2>Configuración de la Estancia</h2>
-                <label>Entrada:</label> <input type="date" name="fecha_in">
-                <label>Salida:</label> <input type="date" name="fecha_out">
-                
-                <br><br>
-                <label>Plan de Desayuno:</label>
-                <select name="desayuno">
+        <!-- 3. TU FORMULARIO DE REGISTRO (Recuperado íntegro) -->
+        <section id="formulario-registro-total">
+            <h2 class="formulario_titulo">Datos del Huésped Principal</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <div>
+                    <label class="formulario_label">Tipo de Documento:</label>
+                    <select name="tipo_doc" class="formulario_input">
+                        <option value="dni">DNI</option>
+                        <option value="ce">Carnet de Extranjería</option>
+                        <option value="pasaporte">Pasaporte</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="formulario_label">Número de Documento:</label>
+                    <input type="text" name="nro_doc" class="formulario_input" placeholder="Ej: 77123456" required>
+                </div>
+            </div>
+
+            <h2 class="formulario_titulo">Configuración de la Estancia</h2>
+            <div style="margin-bottom: 15px;">
+                <label class="formulario_label">Fecha de Entrada:</label>
+                <input type="date" name="fecha_in" class="formulario_input">
+                <label class="formulario_label" style="margin-left: 10px;">Fecha de Salida:</label>
+                <input type="date" name="fecha_out" class="formulario_input">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label class="formulario_label">Huéspedes:</label>
+                <input type="number" name="adultos" min="1" max="4" value="1">
+                <label style="margin-left: 10px;">Niños:</label>
+                <input type="number" name="ninos" min="0" max="3" value="0">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label class="formulario_label">Plan de Desayuno:</label>
+                <select name="desayuno" class="formulario_input">
                     <option value="no">Sin desayuno</option>
+                    <option value="continental">Continental</option>
+                    <option value="americano">Americano</option>
                     <option value="peruano">Peruano Especial</option>
                 </select>
+            </div>
 
-                <p><b>Servicios Extra:</b></p>
-                <input type="checkbox" name="extra" value="traslado"> Traslado Aeropuerto
-                <input type="checkbox" name="extra" value="cama_extra"> Cama adicional
+            <!-- EXTRAS -->
+            <div style="margin-bottom: 15px;">
+                <label><b>Extras:</b></label><br>
+                <input type="checkbox" name="extra" value="traslado"> Traslado
+                <input type="checkbox" name="extra" value="kit" style="margin-left: 10px;"> Kit Bienvenida
+                <input type="checkbox" name="extra" value="cama" style="margin-left: 10px;"> Cama Extra
+            </div>
 
-                <p>Mensaje para recepción:</p>
-                <textarea rows="4" style="width: 100%;"></textarea>
+            <div style="margin-bottom: 15px;">
+                <label>Mensaje adicional:</label><br>
+                <textarea rows="4" name="comentarios" style="width: 100%;"></textarea>
+            </div>
 
-                <div style="text-align: center; margin-top: 20px;">
-                    <button type="submit" style="padding: 10px 20px; background-color: green; color: white;">CONFIRMAR RESERVA</button>
-                    <button type="reset" style="padding: 10px 20px; background-color: red; color: white;">LIMPIAR</button>
-                </div>
-            </form>
+            <!-- BOTONES DE CONTROL (DENTRO DEL FORM) -->
+            <div style="text-align: center; margin-top: 20px;">
+                <input type="submit" value="CONFIRMAR RESERVA" class="formulario_submit" style="padding: 10px 20px; background-color: #27ae60; color: white; border: none; cursor: pointer;">
+                <input type="reset" value="LIMPIAR TODO" class="formulario_submit" style="padding: 10px 20px; background-color: #c0392b; color: white; border: none; cursor: pointer; margin-left: 10px;">
+            </div>
         </section>
-    </main>
-
-    <hr>
-    <footer>
-        <p>&copy; 2026 Hostal Yetsi - Todos los derechos reservados.</p>
-    </footer>
-
-</body>
-</html>
+    </form>
+</main>
