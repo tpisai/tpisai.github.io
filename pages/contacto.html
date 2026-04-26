@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Hostal Yetsi</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Hostal Yetsi</h1>
+            <span>Contacto y Reservas</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="habitaciones.html">Habitaciones</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <h2>Envíanos un mensaje</h2>
+        <p>¿Tienes dudas sobre nuestras sedes en Arequipa, Ica, Lima o Cusco? Escríbenos:</p>
+
+        <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+            <div>
+                <label for="nombre">Nombre Completo:</label><br>
+                <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 8px;">
+            </div>
+
+            <div>
+                <label for="email">Correo Electrónico:</label><br>
+                <input type="email" id="email" name="email" required style="width: 100%; padding: 8px;">
+            </div>
+
+            <div>
+                <label for="ciudad">Ciudad de interés:</label><br>
+                <select id="ciudad" name="ciudad" style="width: 100%; padding: 8px;">
+                    <option value="arequipa">Arequipa</option>
+                    <option value="ica">Ica</option>
+                    <option value="lima">Lima</option>
+                    <option value="cusco">Cusco</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="mensaje">Mensaje o Pedido Especial:</label><br>
+                <textarea id="mensaje" name="mensaje" rows="5" style="width: 100%; padding: 8px;"></textarea>
+            </div>
+
+            <button type="submit" style="background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                Enviar Consulta
+            </button>
+        </form>
+
+        <section style="margin-top: 30px;">
+            <h3>Otras formas de contacto</h3>
+            <p>📞 <strong>Teléfono:</strong> +51 987 654 321</p>
+            <p>📧 <strong>Email:</strong> reservas@hostalyetsi.com</p>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 Hostal Yetsi - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
