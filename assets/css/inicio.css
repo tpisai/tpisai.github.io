@@ -1,0 +1,6 @@
+.info_add{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
