@@ -1,3 +1,8 @@
+.body{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: rgba(240, 220, 191, 0.978);
+}
 .info_add{
     display: flex;
     flex-direction: column;
