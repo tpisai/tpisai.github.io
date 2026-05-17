@@ -11,12 +11,18 @@
 }
 .card{
     display: flex;
-    border: 10px solid #000;
+    border: 2px solid #000;
     border-radius: 8px;
-    padding: 20px;
+    justify-content: space-around;
+    padding: 15px;
     margin: 20px auto;
     max-width: 600px;
     text-align: center;
+}
+.img{
+    height: 200px;
+    width: 200px;
+    border-radius: 8px;
 }
 #relacion{
     display: flex;
