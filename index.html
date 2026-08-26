@@ -1,263 +1,415 @@
 <!DOCTYPE html>
-<html lang="es">  
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mi primera Web</title>
-        <link rel="stylesheet" href="assets/css/inicio.css">
-        <script src="assets/js/inicio.js" defer></script>
-    </head>
-    <header>
-            <h1>Mi primera página web</h1>
-            <marquee>¡Bienvenido a mi sitio web!</marquee>
-            <hr>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="365 días de nosotros — un pequeño rincón para Bet.">
+    <title>Bet & Yo — 365 días contigo</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <!-- INTRO / HERO -->
+    <header class="hero" id="inicio">
+        <img class="floral-corner floral-corner-left" src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" aria-hidden="true">
+        <img class="floral-corner floral-corner-right" src="https://images.pexels.com/photos/20304134/pexels-photo-20304134.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" aria-hidden="true">
+        <div class="floral-sprinkle sprinkle-one"></div>
+        <div class="floral-sprinkle sprinkle-two"></div>
+
+        <div class="hero-content">
+            <p class="eyebrow">30.08.2025 — 30.08.2026</p>
+            <h1>Bet <span>♥</span> Yo</h1>
+            <p class="hero-subtitle">365 días contigo.</p>
+            <p class="hero-text">
+                Hice este pequeño lugar para guardar algunas de las cosas
+                que hicieron que este primer año fuera nuestro.
+            </p>
+
+            <button class="main-button" id="startButton">
+                Entrar a nuestro primer año
+                <span>↓</span>
+            </button>
+        </div>
     </header>
 
-    <body>  
-        <h1>TALLER DE PROGRAMACION WEB</h1>
-        <p> Bienvenido al curso, hoy usaremos las etiquetas de HTML que mas nos interese:</p>
-        <table border="2.5">
-            <caption>Etiquetas HTML más utilizadas</caption>
-            <tr>
-                <th>Etiqueta</th>
-                <th>Descripción</th>
-            </tr>
-            <tr>
-                <td>&lt;h1&gt;</td>
-                <td>Encabezado de nivel 1</td>
-            </tr>
-            <tr>
-                <td>&lt;p&gt;</td>
-                <td>Párrafo de texto</td>
-            </tr>
-            <tr>
-                <td>&lt;table&gt;</td>
-                <td>Tabla de datos</td>
-            </tr>
-            <tr>
-                <td>&lt;caption&gt;</td>
-                <td>Título de la tabla</td>
-            </tr>
-            <tr>
-                <td>&lt;tr&gt;</td>
-                <td>Fila de la tabla</td>
-            </tr>
-            <tr>
-                <td>&lt;th&gt;</td>
-                <td>Encabezado de columna</td>
-            </tr>
-            <tr>
-                <td>&lt;td&gt;</td>
-                <td>Celda de datos</td>
-            </tr>
-            <tr>
-                <td>&lt;marquee&gt;</td>
-                <td>Texto en movimiento</td>
-            </tr>
-            <tr>
-                <td>&lt;aside&gt;</td>
-                <td>Contenido adicional o complementario</td>
-            </tr>
-            <tr>
-                <td>&lt;footer&gt;</td>
-                <td>Pie de página</td>
-            </tr>
-            <tr>
-                <td>&lt;header&gt;</td>
-                <td>Encabezado de la página</td>
-            </tr>
-            <tr>
-                <td>&lt;i&gt;</td>
-                <td>Texto en cursiva</td>
-            </tr>
-            <tr>
-                <td>&lt;b&gt;</td>
-                <td>Texto en negrita</td>
-            </tr>
-            <tr>
-                <td>&lt;mark&gt;</td>
-                <td>Texto resaltado</td>
-            </tr>
-            <tr>
-                <td>&lt;details&gt;</td>
-                <td>Elemento interactivo que muestra u oculta contenido adicional</td>
-            </tr>
-            <tr>
-                <td>&lt;summary&gt;</td>
-                <td>Elemento que define un resumen o título para el contenido adicional dentro de &lt;details&gt;</td>
-            </tr>
-            <tr>
-                <td>&lt;img&gt;</td>
-                <td>Etiqueta para insertar imágenes</td>
-            </tr>
-            <tr>
-                <td>&lt;hr&gt;</td>
-                <td>Etiqueta para insertar una línea horizontal</td>
-            </tr>
-            <tr>
-                <td>&lt;form&gt;</td>
-                <td>Etiqueta para crear formularios</td>
-            </tr>
-            <tr>
-                <td>&lt;input&gt;</td>
-                <td>Etiqueta para crear campos de entrada en formularios</td>
-            </tr>
-            <tr>
-                <td>&lt;CSS&gt;</td>
-                <td>Etiqueta para insertar estilo CSS</td>
-            </tr>
-            <tr>
-                <td>&lt;JavaScript&gt;</td>
-                <td>Etiqueta para insertar código JavaScript</td>
-            </tr>
-            <tr>
-                <td>&lt;defer&gt;</td>
-                <td>Etiqueta para retrasar la carga del Script hasta que la pagina este cargada</td>
-            </tr>
-            <tr>
-                <td>&lt;Let&gt;</td>
-                <td>Etiqueta para declarar variables locales en JavaScript, Solo usar eso, var ya no es necesario</td>
-            </tr>
-            <tr>
-                <td>&lt;const&gt;</td>
-                <td>Etiqueta para declarar variables constantes en JavaScript, es decir, su valor no puede ser reasignado después de su declaración</td>
-            </tr>
-            <tr>
-                <td>&lt;document&gt;</td>
-                <td>Etiqueta para representar el documento HTML</td>
-            </tr>
-            <tr>
-                <td>&lt;document.getElementById&gt;</td>
-                <td>Etiqueta para obtener un elemento del documento HTML por su ID</td>
-            </tr>
-            <tr>
-                <td>&lt;document.getElementsByClassName&gt;</td>
-                <td>Etiqueta para obtener elementos del documento HTML por su clase</td>
-            <tr>
-                <td>&lt;document.querySelector&gt;</td>
-                <td>Etiqueta para obtener un elemento del documento HTML por su selector, remplaza a los 2 anteriores</td>
-            </tr>
-            <tr>
-                <td>&lt;document.addEventListener&gt;</td>
-                <td>Etiqueta para agregar un evento a un elemento del documento HTML</td>
-            </tr>
-        </table>
-        
-        <p><b>Esta es una tabla creada en HTML</b></p>
-        <p><i>¡Espero que te guste!</i></p>
-        <p><mark>Esta es una celda resaltada</mark></p>
-        <hr>
-        <h2>Fomrularios en HMTL5</h2>
-        <form action="/usuarios" method="post">
-            <label for="Apellidos">Apellidos:</label>
-            <input type="text" name="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos" size="20">
-            <br><br>
-            <label for="edad">Edad:</label>
-            <input type="text" id="edad" name="Edad" size="5">
-            <br><br>
-            <button type="submit">Enviar</button>
-            <button type="reset">Limpiar</button>
-        </form>
+    <main>
 
-        <form action="Validar_Datos">   
-            usuario: <br>
-            <input type="text" name="usuario" value="">
-            <br>
-            contraseña: <br>
-            <input type="password" name="contraseña" value="">
-            <br><br>
-            <input type="submit" value="Ingresar al Sistema">
-            <input type="reset" value="Limpiar">
-            <br><br>
-            Nombre del Curso: <br>
-            <input type="text" name="curso" value="Matematicas"><br>
-            Turno a Elegir: <br>
-            <input type="radio" name="turno" value="mañana"> Mañana<br>
-            <input type="radio" name="turno" value="tarde"> Tarde<br>
-            <input type="radio" name="turno" value="noche"> Noche<br>
-            <br>
-            Fecha de Registro: <br> 
-            <input type="date" name="fecha_registro">
-             <br><br>
-            boton para Programar: <br>
-            <button type="button" onclick="alert('¡Hola! Has hecho clic en el botón Programar, con el alert muestra este mensaje.')">Programar</button>
-            <br><br>
-            Uso de la Etiqueta Select: <br>
-            <select name="Marcas de Autos">
-                <option value="Toyota">Toyota</option>
-                <option value="Honda">Honda</option>
-                <option value="Ford">Ford</option>
-                <option value="Chevrolet">Chevrolet</option>
-                <option value="Nissan"selected>Nissan</option>
-            </select>
-             <br><br>
-             <input type="submit" value="Enviar Datos">
-             <input type="reset" value="Limpiar Formulario">
-        </form>
-        <br><br>
-        <br><br>
-        <form action="Campos de Entrada">   
-            <label>Lista de Universidades</label>
-            <input type="text" list="Universidades" name="universidad" placeholder="Seleccione una universidad">
-            <datalist id="Universidades">
-                <option value="Universidad Nacional de Colombia">
-                <option value="Universidad de los Andes">
-                <option value="Pontificia Universidad Javeriana">
-                <option value="Universidad del Rosario">
-                <option value="Universidad Externado de Colombia">
-                    </datalist>
-                    <br><br>
-                <input type="submit" value="Enviar Datos">
-                <br><br>
-            Textarea: <br>
-            <textarea name="comentarios" rows="4" cols="50" placeholder="Ingrese sus comentarios" 
-            maxlength="50" autofocus>Si hace falta su Universidad, por favor escribala aqui.
-            </textarea>
-                </form> 
-                <form action="Registrar Archivo">
-                    <label for="archivo">Subir Archivo:</label>
-                    <input type="file" name="portada" size="30" value="Examinar..">
-                    <br><br>
-                </form>
-        <hr>
-        <h2>Uso de JavaScript en HTML5</h2>
-        <p>JavaScript es un lenguaje de programación que se utiliza para crear contenido interactivo
-            en las páginas web. Permite agregar funcionalidades dinámicas, como validación de formularios, animaciones, y manipulación del DOM (Document Object Model).
-        </p> 
-        <hr>
-        <ul id="lista">
-            <li>Matematicas<button data-id="1" data-action="eliminar">
-                <span>Eliminar</span>
-            </button></li>
-            <li>Fisica</li>
-            <li>Quimica</li>
-        </ul>
-        <hr>
-        <p><mark>Colocar imágenes es sencillo en HTML:5</mark></p>
-        <div class="card">
-            <div id="relacion">
-            <img class="img" src="assets/img/amor.jpg" alt="Imagen de amor" width="300">
-            <h3>Mi tiempo a tu lado es maravilloso, son bellos 9 meses a tu lado mi amor &#x2764;</h3>
-            <button type="button" onclick="alert('Ayer fue maravilloso sentir tus gritos y gemidos en mi oido, pero mas me fascina haberte visto sonreir por haberte cantando con mi fea voz, te amo muchoooooooooo, TE AMO CARAJO &#x2764;')">Betsabel</button>
+        <!-- CONTADOR -->
+        <section class="section counter-section reveal">
+            <div class="section-heading">
+                <p class="eyebrow">Desde aquel día</p>
+                <h2>El tiempo contigo se siente diferente.</h2>
             </div>
-            <div id="meme">
-            <img class="img" src="assets/img/perrito gozoso.jpg" alt="Imagen de perrito" width="300">
-            <h3>Asi sera nuestra primera mascota, aunque mas probable sea un gato que diga</h3>
-            <button type="button" onclick="alert('MIAU!!, pues obvio es un gato, no te dira mamita dame comida caray, aunque lo haga con la mirada jsjs')">Mascota</button>
+
+            <div class="counter-card">
+                <div class="counter-item">
+                    <strong id="days">365</strong>
+                    <span>días</span>
+                </div>
+                <div class="counter-item">
+                    <strong id="hours">00</strong>
+                    <span>horas</span>
+                </div>
+                <div class="counter-item">
+                    <strong id="minutes">00</strong>
+                    <span>minutos</span>
+                </div>
+                <div class="counter-item">
+                    <strong id="seconds">00</strong>
+                    <span>segundos</span>
+                </div>
             </div>
-        </div>
-    </body>
-    <aside class="info_add">
-            <h2>Información adicional</h2>
-            <p>HTML es el lenguaje de marcado utilizado para crear páginas web. Es fundamental para el desarrollo web y se utiliza junto con CSS y JavaScript para crear sitios web interactivos y atractivos.</p>
-            <details>
-                <summary>Más sobre HTML</summary>
-                <p>HTML significa HyperText Markup Language. Fue creado por Tim Berners-Lee en 1991 y ha evolucionado a lo largo de los años para incluir nuevas etiquetas y características que permiten a los desarrolladores web crear contenido más rico y dinámico.</p>
-            </details>
-        </aside>
+
+            <p class="soft-text">Y todavía quiero seguir contando.</p>
+        </section>
+
+        <!-- HISTORIA -->
+        <section class="section story-section reveal" id="historia">
+            <div class="section-heading">
+                <p class="eyebrow">Antes de nosotros</p>
+                <h2>Nos conocimos sin saber lo que venía.</h2>
+                <p>
+                    Una clase de matemáticas, varios cursos juntos y conversaciones
+                    que poco a poco dejaron de sentirse como conversaciones de amigos.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <article class="timeline-card">
+                    <span class="timeline-number">01</span>
+                    <p class="timeline-date">Primer ciclo</p>
+                    <h3>Introducción a las Matemáticas</h3>
+                    <p>
+                        Ahí empezó todo, aunque todavía ninguno de los dos
+                        tenía idea de lo importante que terminaría siendo.
+                    </p>
+                    <!-- FOTO: coloca aquí una foto de la universidad o una foto antigua de ustedes. -->
+                    <div class="photo-placeholder">
+                        <span>📷</span>
+                        Foto de nuestros primeros días
+                    </div>
+                </article>
+
+                <article class="timeline-card featured">
+                    <span class="timeline-number">02</span>
+                    <p class="timeline-date">Tercer ciclo</p>
+                    <h3>Dos veces por semana.</h3>
+                    <p>
+                        Compartíamos cursos, nos veíamos en la universidad
+                        y hablábamos prácticamente todo el día.
+                    </p>
+                    <!-- FOTO: idealmente una foto de ustedes cuando todavía eran amigos. -->
+                    <div class="photo-placeholder">
+                        <span>📷</span>
+                        Una foto de aquella época
+                    </div>
+                </article>
+
+                <article class="timeline-card">
+                    <span class="timeline-number">03</span>
+                    <p class="timeline-date">30 de agosto de 2025</p>
+                    <h3>Y entonces pasó.</h3>
+                    <p>
+                        Yo ya sabía cuál quería que fuera tu respuesta,
+                        pero eso no hizo que estuviera menos nervioso.
+                    </p>
+                    <!-- FOTO: coloca aquí una foto de la primera salida solos o del día de la declaración. -->
+                    <div class="photo-placeholder">
+                        <span>📷</span>
+                        El comienzo de nosotros
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- DECLARACIÓN -->
+        <section class="love-section reveal">
+            <div class="love-card">
+                <div class="love-symbol">♥</div>
+                <p class="eyebrow">30 / 08 / 2025</p>
+                <h2>Nuestro comienzo.</h2>
+                <p>
+                    Quizá ya sabíamos lo que sentíamos antes de ese día.
+                    Pero igual quería vivir el momento de decirte:
+                </p>
+                <strong>“Quiero estar contigo.”</strong>
+            </div>
+        </section>
+
+        <!-- COLLAR -->
+        <section class="section reveal">
+            <div class="split-section">
+                <div class="split-text">
+                    <p class="eyebrow">Una pequeña promesa</p>
+                    <h2>Nuestras iniciales. Nuestra fecha. Nuestra historia.</h2>
+                    <p>
+                        Ese collar se convirtió en una pequeña forma de llevar
+                        con nosotros el día en que empezamos a ser nosotros.
+                    </p>
+                    <div class="mini-note">
+                        <span>30.08.2025</span>
+                        <span>♡</span>
+                    </div>
+                </div>
+
+                <div class="image-frame portrait">
+                    <!-- FOTO: coloca aquí una foto del collar, de ambos llevándolo o de sus manos. -->
+                    <div class="photo-placeholder large">
+                        <span>📷</span>
+                        Foto del collar
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MILO J -->
+        <section class="concert-section reveal" id="concierto">
+            <div class="concert-grid">
+                <div class="concert-copy">
+                    <span class="street-label">OUR MEMORY // 01</span>
+                    <p class="eyebrow">Nuestra banda sonora</p>
+                    <h2>Milo J<br><span>en Lima.</span></h2>
+                    <p>
+                        No tenemos una canción oficialmente nuestra,
+                        pero sí tenemos un artista que terminó formando
+                        parte de nuestra historia.
+                    </p>
+                    <div class="concert-date">LIMA · 2026</div>
+                </div>
+
+                <div class="concert-photo">
+                    <!-- FOTO: coloca aquí la mejor foto de ustedes durante el concierto. -->
+                    <div class="photo-placeholder dark">
+                        <span>📷</span>
+                        Foto del concierto
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COSAS QUE AMO -->
+        <section class="section reveal">
+            <div class="section-heading">
+                <p class="eyebrow">Pequeñas cosas</p>
+                <h2>Hay muchas razones por las que te quiero.</h2>
+                <p>Estas son solo algunas.</p>
+            </div>
+
+            <div class="reasons-grid">
+                <article class="reason-card">
+                    <div class="card-photo small-flower-photo"><!-- FOTO DE INTERNET/TUYA: una flor o una foto de Bet con flores. --><img src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Flores blancas delicadas"></div>
+                    <h3>Tu forma de iluminar mis días.</h3>
+                    <p>Como un girasol, pero versión Bet.</p>
+                </article>
+
+                <article class="reason-card">
+                    <div class="card-photo"><!-- FOTO TUYA: tallarín verde que hayan compartido. --><img src="img/comida-tallarin-verde.jpg" alt="Nuestro tallarín verde"></div>
+                    <h3>Que te guste comer tanto como a mí.</h3>
+                    <p>Especialmente si hay tallarín verde de por medio.</p>
+                </article>
+
+                <article class="reason-card">
+                    <div class="card-photo"><!-- FOTO TUYA: ustedes viendo una película o una salida al cine. --><img src="img/foto-pelicula.jpg" alt="Una película juntos"></div>
+                    <h3>Ver películas contigo.</h3>
+                    <p>A veces importa más con quién se ve que qué película es.</p>
+                </article>
+
+                <article class="reason-card">
+                    <div class="card-photo"><!-- FOTO TUYA: Bet relacionada con K-pop. --><img src="img/bet-kpop.jpg" alt="Bet y sus gustos"></div>
+                    <h3>Tu obsesión con el K-pop.</h3>
+                    <p>Y sí, ya acepté que Enhypen es parte del paquete.</p>
+                </article>
+
+                <article class="reason-card">
+                    <div class="card-photo"><!-- FOTO TUYA: la foto más graciosa de Bet. --><img src="img/bet-betsi.jpg" alt="Una foto divertida de Bet"></div>
+                    <h3>Decirte “Betsi”.</h3>
+                    <p>Sé que no te gusta. Precisamente por eso me da risa.</p>
+                </article>
+
+                <article class="reason-card">
+                    <div class="card-photo"><!-- FOTO TUYA: una foto espontánea de Bet. --><img src="img/bet-espontanea.jpg" alt="Bet"></div>
+                    <h3>Tu manera de ser tú.</h3>
+                    <p>La razón más sencilla y probablemente la más importante.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- FLORES -->
+        <section class="flower-section reveal">
+            <div class="section-heading">
+                <p class="eyebrow">Si fueras una flor</p>
+                <h2>Probablemente serías todas.</h2>
+            </div>
+
+            <div class="flowers">
+                <article class="flower-card white-flower">
+                    <div class="flower-image"><!-- FOTO DE INTERNET: lluvia blanca --><img src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Lluvia blanca"></div>
+                    <h3>Lluvia blanca</h3>
+                    <p>Pequeña, delicada y capaz de llenar todo un espacio.</p>
+                </article>
+
+                <article class="flower-card purple-flower">
+                    <div class="flower-image"><!-- FOTO TUYA/INTERNET: lluvia morada --><img src="img/lluvia-morada.jpg" alt="Lluvia morada"></div>
+                    <h3>Lluvia morada</h3>
+                    <p>Porque hay algo en ti que siempre hace todo un poquito más bonito.</p>
+                </article>
+
+                <article class="flower-card sunflower">
+                    <div class="flower-image"><!-- FOTO TUYA/INTERNET: girasol --><img src="img/girasol.jpg" alt="Girasoles"></div>
+                    <h3>Girasoles</h3>
+                    <p>Porque tienes esa costumbre de traer luz incluso sin intentarlo.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- COMIDA -->
+        <section class="section food-section reveal">
+            <div class="section-heading">
+                <p class="eyebrow">Nuestro verdadero lenguaje del amor</p>
+                <h2>El amor también se come.</h2>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card">
+                    <div class="card-photo"><!-- FOTO TUYA: tallarín verde que hayan compartido. --><img src="img/comida-tallarin-verde.jpg" alt="Nuestro tallarín verde"></div>
+                    <h3>Tallarín verde</h3>
+                    <p>Favorito de los dos.</p>
+                </article>
+                <article class="food-card">
+                    <div class="card-photo"><!-- FOTO TUYA: pollo con papas o una comida frita que hayan disfrutado. --><img src="img/comida-pollo-papas.jpg" alt="Pollo y papas"></div>
+                    <h3>Pollo + papas</h3>
+                    <p>Una combinación que nunca falla.</p>
+                </article>
+                <article class="food-card">
+                    <div class="card-photo"><!-- FOTO TUYA: burrito, causa, tacos o comida rellena. --><img src="img/comida-rellena.jpg" alt="Nuestra comida favorita"></div>
+                    <h3>Algo relleno</h3>
+                    <p>Burritos, causa, tacos... tú elige.</p>
+                </article>
+            </div>
+
+            <!-- FOTO: puedes colocar aquí una foto divertida de Bet comiendo o una foto de una comida especial. -->
+            <div class="food-photo photo-placeholder">
+                <span>📷</span>
+                Nuestra foto gastronómica más nosotros
+            </div>
+
+            <p class="food-joke">Dicen que el amor entra por los ojos... contigo también entra con pollo y papas.</p>
+        </section>
+
+        <!-- SECRETOS -->
+        <section class="secret-section reveal">
+            <div class="secret-card">
+                <p class="eyebrow">Solo nosotros</p>
+                <h2>Hay recuerdos que no necesitan una foto.</h2>
+                <p>
+                    Algunos lugares, algunas escapadas y algunas noches
+                    se quedan mejor guardados entre dos personas.
+                </p>
+
+                <button class="secret-button" id="secretButton">Abrir nuestro secreto</button>
+
+                <div class="secret-message" id="secretMessage">
+                    <div class="card-photo"><!-- FOTO TUYA: una foto espontánea de Bet. --><img src="img/bet-espontanea.jpg" alt="Bet"></div>
+                    <p>
+                        Hay historias que no voy a poner aquí.
+                        Algunas son solamente nuestras.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETALLE FLORAL -->
+        <section class="floral-break reveal">
+            <img src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Flores blancas de lluvia">
+            <div>
+                <p class="eyebrow">Entre recuerdo y recuerdo</p>
+                <h2>Como pequeñas flores que aparecen sin avisar.</h2>
+            </div>
+        </section>
+
+        <!-- GALERÍA -->
+        <section class="section gallery-section reveal">
+            <div class="section-heading">
+                <p class="eyebrow">365 recuerdos</p>
+                <h2>Un año en fotografías.</h2>
+                <p>
+                    Aquí puedes llenar la página con todas esas fotos que
+                    no quieres que se queden solamente en tu galería.
+                </p>
+            </div>
+
+            <div class="gallery">
+                <!-- FOTO: una foto espontánea donde ambos estén riéndose. -->
+                <div class="gallery-item big"><div class="photo-placeholder"><span>📷</span>Una risa nuestra</div></div>
+                <!-- FOTO: una selfie bonita de ambos. -->
+                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>Una selfie</div></div>
+                <!-- FOTO: una foto relacionada con la universidad. -->
+                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>Universidad</div></div>
+                <!-- FOTO: una comida compartida. -->
+                <div class="gallery-item wide"><div class="photo-placeholder"><span>📷</span>Una comida juntos</div></div>
+                <!-- FOTO: una foto del concierto. -->
+                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>Milo J</div></div>
+                <!-- FOTO: una foto graciosa de Bet. -->
+                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>La Bet más Betsi</div></div>
+            </div>
+        </section>
+
+        <!-- CARTA -->
+        <section class="letter-section reveal">
+            <div class="letter-card">
+                <div class="envelope-icon"><!-- FOTO/DETALLE: una foto de una carta o detalle para ella. --><img src="img/carta.jpg" alt="Una carta para Bet"></div>
+                <p class="eyebrow">Tengo algo más que decirte</p>
+                <h2>Una carta para ti.</h2>
+                <p>
+                    Esta parte la vamos a llenar con tus propias palabras.
+                    No quiero que sea una carta genérica: quiero que sea
+                    exactamente lo que tú quieres decirle.
+                </p>
+                <button class="main-button" id="letterButton">Abrir carta</button>
+            </div>
+
+            <div class="letter-content" id="letterContent">
+                <p class="letter-date">30 de agosto de 2026</p>
+                <h3>Para mi Bet:</h3>
+
+                <!-- CARTA: reemplaza este texto por tu carta personal. -->
+                <p>
+                    Mi amor, después de todo este año solamente puedo pensar
+                    en lo bonito que ha sido compartir mi vida contigo.
+                </p>
+                <p>
+                    Gracias por cada conversación, cada salida, cada comida,
+                    cada risa y cada momento que terminó convirtiéndose
+                    en un recuerdo nuestro.
+                </p>
+                <p>
+                    Feliz primer año, Bet. Espero que este sea solamente
+                    el primero de muchísimos capítulos juntos.
+                </p>
+
+                <p class="letter-signature">Con amor,<br>yo. ❤️</p>
+            </div>
+        </section>
+
+        <!-- FINAL -->
+        <section class="final-section" id="final">
+            <div class="final-content">
+                <p class="eyebrow">30.08.2025 → 30.08.2026</p>
+                <h2>Feliz primer año,<br><span>Bet. ♥</span></h2>
+                <p>365 días contigo y todavía quiero seguir contando.</p>
+
+                <button class="final-button" id="celebrateButton">
+                    Celebrar nuestro año ✨
+                </button>
+            </div>
+        </section>
+
+    </main>
+
     <footer>
-        <p>&copy; 2026 Mi primera Web. Todos los derechos reservados.</p>
+        Hecho con amor para Bet · 30.08.2026
     </footer>
 
+    <script src="assets/js/script.js"></script>
+</body>
 </html>
-
