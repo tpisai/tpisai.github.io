@@ -1,429 +1,486 @@
-const startButton = document.getElementById("startButton");
-const secretButton = document.getElementById("secretButton");
-const secretMessage = document.getElementById("secretMessage");
-const letterButton = document.getElementById("letterButton");
-const letterContent = document.getElementById("letterContent");
-const celebrateButton = document.getElementById("celebrateButton");
-const particleLayer = document.getElementById("particleLayer");
-const scrollProgress = document.getElementById("scrollProgress");
-const cursorGlow = document.getElementById("cursorGlow");
-const floatingQuote = document.getElementById("floatingQuote");
-const sparkleButton = document.getElementById("sparkleButton");
-const midnightButton = document.getElementById("midnightButton");
-const midnightReveal = document.getElementById("midnightReveal");
+(() => {
+  "use strict";
 
-const anniversaryDate = new Date("2025-08-30T16:54:00");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const touchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  const particleLayer = $("#particleLayer");
+  const cursorGlow = $("#cursorGlow");
+  const scrollProgress = $("#scrollProgress");
 
-/* =========================================================
-   CONTADOR
-   ========================================================= */
-function updateCounter() {
-    const now = new Date();
-    let difference = now - anniversaryDate;
-    if (difference < 0) difference = 0;
+  /* COUNTER */
+  const anniversary = new Date("2025-08-30T16:54:00");
+  const updateNumber = (id, value, pad = false) => {
+    const el = $("#" + id);
+    if (el) el.textContent = pad ? String(value).padStart(2, "0") : String(value);
+  };
+  function updateCounter() {
+    const diff = Math.max(0, Date.now() - anniversary.getTime());
+    const totalSeconds = Math.floor(diff / 1000);
+    updateNumber("days", Math.floor(totalSeconds / 86400));
+    updateNumber("hours", Math.floor((totalSeconds % 86400) / 3600), true);
+    updateNumber("minutes", Math.floor((totalSeconds % 3600) / 60), true);
+    updateNumber("seconds", totalSeconds % 60, true);
+  }
+  updateCounter();
+  window.setInterval(updateCounter, 1000);
 
-    const totalSeconds = Math.floor(difference / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    updateNumber("days", days, false);
-    updateNumber("hours", hours, true);
-    updateNumber("minutes", minutes, true);
-    updateNumber("seconds", seconds, true);
-}
-
-function updateNumber(id, value, pad) {
-    const element = document.getElementById(id);
-    if (!element) return;
-    const next = pad ? String(value).padStart(2, "0") : String(value);
-    if (element.textContent !== next) {
-        element.textContent = next;
-        const parent = element.closest(".counter-item");
-        if (parent && !prefersReducedMotion) {
-            parent.classList.remove("tick");
-            void parent.offsetWidth;
-            parent.classList.add("tick");
-        }
+  /* SCROLL */
+  let scrollTick = false;
+  function updateScrollProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollProgress) scrollProgress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+    scrollTick = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!scrollTick) {
+      window.requestAnimationFrame(updateScrollProgress);
+      scrollTick = true;
     }
-}
+  }, { passive: true });
 
-updateCounter();
-setInterval(updateCounter, 1000);
-
-/* =========================================================
-   ENTRADA + MICRO INTERACCIÓN
-   ========================================================= */
-startButton?.addEventListener("click", (event) => {
-    createBurst(event.clientX, event.clientY, 16);
-    document.getElementById("historia")?.scrollIntoView({ behavior: "smooth" });
-});
-
-/* Botón secreto */
-secretButton?.addEventListener("click", (event) => {
-    secretMessage.classList.toggle("show");
-
-    if (secretMessage.classList.contains("show")) {
-        secretButton.textContent = "Cerrar nuestro secreto";
-        createBurst(event.clientX, event.clientY, 12);
-    } else {
-        secretButton.textContent = "Abrir nuestro secreto";
-    }
-});
-
-/* Nuestro lado secreto */
-midnightButton?.addEventListener("click", (event) => {
-    if (!midnightReveal) return;
-    const open = midnightReveal.classList.toggle("show");
-    midnightReveal.setAttribute("aria-hidden", String(!open));
-    midnightButton.querySelector("span").textContent = open
-        ? "Cerrar nuestro lado secreto"
-        : "Entrar en nuestro lado secreto";
-    createBurst(event.clientX, event.clientY, open ? 22 : 10);
-    if (open) {
-        setTimeout(() => midnightReveal.scrollIntoView({ behavior: "smooth", block: "center" }), 180);
-    }
-});
-
-/* Carta */
-letterButton?.addEventListener("click", (event) => {
-    letterContent.classList.toggle("show");
-
-    if (letterContent.classList.contains("show")) {
-        letterButton.textContent = "Cerrar carta";
-        createBurst(event.clientX, event.clientY, 18);
-        setTimeout(() => {
-            letterContent.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 120);
-    } else {
-        letterButton.textContent = "Abrir carta";
-    }
-});
-
-/* =========================================================
-   REVEAL AL HACER SCROLL
-   ========================================================= */
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+  /* REVEAL */
+  const revealObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
             entry.target.classList.add("visible");
             revealObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: "0px 0px -5% 0px"
-});
+          }
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -5% 0px" })
+    : null;
+  $$(".reveal").forEach(el => revealObserver ? revealObserver.observe(el) : el.classList.add("visible"));
 
-revealElements.forEach((element) => revealObserver.observe(element));
-
-// Fallback: si un navegador bloquea IntersectionObserver, la página nunca queda invisible.
-setTimeout(() => {
-    revealElements.forEach((element) => element.classList.add("visible"));
-}, 1800);
-
-// Marca que el motor interactivo ya está listo.
-document.documentElement.classList.add("js-ready");
-
-/* =========================================================
-   PROGRESO DE LECTURA
-   ========================================================= */
-function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollable > 0 ? (scrollTop / scrollable) * 100 : 0;
-    if (scrollProgress) scrollProgress.style.width = `${progress}%`;
-
-    if (floatingQuote) {
-        floatingQuote.classList.toggle("show", scrollTop > window.innerHeight * 0.7);
+  /* SMALL BURST */
+  function createBurst(x, y, amount = 12) {
+    if (!document.body || reducedMotion) return;
+    const safeX = Number.isFinite(x) ? x : innerWidth / 2;
+    const safeY = Number.isFinite(y) ? y : innerHeight / 2;
+    const symbols = ["✦", "♡", "✧", "✿", "❀"];
+    for (let i = 0; i < amount; i++) {
+      const spark = document.createElement("span");
+      spark.className = "spark-burst";
+      spark.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      spark.style.left = `${safeX}px`;
+      spark.style.top = `${safeY}px`;
+      spark.style.setProperty("--x", `${-120 + Math.random() * 240}px`);
+      spark.style.setProperty("--y", `${-120 + Math.random() * 240}px`);
+      spark.style.animationDelay = `${Math.random() * .08}s`;
+      document.body.appendChild(spark);
+      window.setTimeout(() => spark.remove(), 1100);
     }
-}
+  }
 
-window.addEventListener("scroll", updateScrollProgress, { passive: true });
-updateScrollProgress();
-
-/* =========================================================
-   LLUVIA DE FLORES / PÉTALOS
-   ========================================================= */
-const symbols = ["✿", "❀", "✧", "♡", "❁", "·"];
-const classes = ["white", "white", "rose", "lilac", "white"];
-
-function createParticle(options = {}) {
-    if (!particleLayer) return;
-
+  /* LIGHT AMBIENT PETALS */
+  const ambientSymbols = ["✿", "❀", "♡"];
+  function createAmbientParticle() {
+    if (!particleLayer || reducedMotion || document.visibilityState !== "visible") return;
     const particle = document.createElement("span");
-    particle.className = `particle ${options.className || classes[Math.floor(Math.random() * classes.length)]}`;
-    particle.textContent = options.symbol || symbols[Math.floor(Math.random() * symbols.length)];
-
-    const size = options.size || (0.55 + Math.random() * 1.15);
-    const duration = options.duration || (8 + Math.random() * 9);
-    const drift = options.drift || `${-80 + Math.random() * 160}px`;
-
-    particle.style.left = `${options.x ?? Math.random() * 100}vw`;
-    particle.style.fontSize = `${size}rem`;
+    particle.className = `particle ${Math.random() > .55 ? "rose" : "white"}`;
+    particle.textContent = ambientSymbols[Math.floor(Math.random() * ambientSymbols.length)];
+    const duration = 12 + Math.random() * 6;
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.fontSize = `${.5 + Math.random() * .75}rem`;
     particle.style.setProperty("--duration", `${duration}s`);
-    particle.style.setProperty("--drift", drift);
-    particle.style.opacity = options.opacity || (0.35 + Math.random() * 0.5);
-    particle.style.animationDelay = options.delay || "0s";
-
+    particle.style.setProperty("--drift", `${-45 + Math.random() * 90}px`);
+    particle.style.opacity = `${.18 + Math.random() * .28}`;
     particleLayer.appendChild(particle);
-    setTimeout(() => particle.remove(), (duration + 2) * 1000);
-}
+    window.setTimeout(() => particle.remove(), (duration + 1) * 1000);
+  }
+  if (!reducedMotion) {
+    const initial = innerWidth < 600 ? 3 : 5;
+    for (let i = 0; i < initial; i++) createAmbientParticle();
+    window.setInterval(createAmbientParticle, innerWidth < 600 ? 3000 : 2600);
+  }
 
-function startAmbientRain() {
-    const reduced = prefersReducedMotion;
-    const amount = reduced ? 5 : (window.innerWidth < 600 ? 12 : 20);
-    for (let i = 0; i < amount; i++) {
-        createParticle({ delay: `${Math.random() * -12}s` });
+  /* BUTTONS */
+  $("#startButton")?.addEventListener("click", event => {
+    createBurst(event.clientX, event.clientY, 14);
+    $("#historia")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+  });
+/* =========================================================
+   CELEBRACIÓN ESPECIAL — 1 AÑO
+   ========================================================= */
+
+let celebrationRunning = false;
+
+function launchCelebration() {
+console.log("LAUNCH CELEBRATION: ENTRÓ");
+  if (celebrationRunning) return;
+
+  celebrationRunning = true;
+
+  let overlay = document.getElementById("celebrationOverlay");
+
+  if (!overlay) {
+
+    overlay = document.createElement("div");
+
+    overlay.id = "celebrationOverlay";
+    overlay.className = "celebration-overlay";
+
+    overlay.innerHTML = `
+      <div class="celebration-ring"></div>
+      <div class="celebration-ring"></div>
+      <div class="celebration-flash"></div>
+
+      <div class="celebration-core">
+
+        <span class="celebration-kicker">
+          30.08.2025 → 30.08.2026
+        </span>
+
+        <div class="celebration-title">
+          1 <span>♥</span>
+        </div>
+
+        <h3>
+          año de nosotros
+        </h3>
+
+        <p>
+          Y todavía siento que esto apenas comienza.
+        </p>
+
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+  }
+
+  /* Mostrar la celebración */
+  requestAnimationFrame(() => {
+    overlay.classList.add("show");
+    console.log("LAUNCH CELEBRATION: OVERLAY MOSTRADO");
+  });
+
+  /* ---------------------------------------------------------
+     EXPLOSIÓN INICIAL
+     --------------------------------------------------------- */
+
+  createBurst(
+    window.innerWidth / 2,
+    window.innerHeight / 2,
+    35
+  );
+
+  /* ---------------------------------------------------------
+     PEQUEÑOS DESTELLOS ALREDEDOR
+     --------------------------------------------------------- */
+
+  const symbols = [
+    "♥",
+    "♡",
+    "💗",
+    "🤍",
+    "🌸",
+    "🌷",
+    "🌼",
+    "🌺",
+    "✦",
+    "✨",
+    "❀"
+  ];
+
+  for (let i = 0; i < 35; i++) {
+
+    window.setTimeout(() => {
+
+      const piece = document.createElement("span");
+
+      piece.className = "celebration-piece";
+
+      piece.textContent =
+        symbols[
+          Math.floor(Math.random() * symbols.length)
+        ];
+
+      piece.style.left =
+        `${Math.random() * 100}vw`;
+
+      piece.style.fontSize =
+        `${0.9 + Math.random() * 1.2}rem`;
+
+      piece.style.setProperty(
+        "--duration",
+        `${3 + Math.random() * 3}s`
+      );
+
+      piece.style.setProperty(
+        "--drift",
+        `${-160 + Math.random() * 320}px`
+      );
+
+      piece.style.setProperty(
+        "--spin",
+        `${-540 + Math.random() * 1080}deg`
+      );
+
+      overlay.appendChild(piece);
+
+      window.setTimeout(() => {
+        piece.remove();
+      }, 7000);
+
+    }, i * 70);
+  }
+
+  /* ---------------------------------------------------------
+     SEGUNDO IMPACTO
+     --------------------------------------------------------- */
+
+  window.setTimeout(() => {
+
+    createBurst(
+      window.innerWidth / 2,
+      window.innerHeight / 2,
+      25
+    );
+
+    overlay.classList.add("impact");
+
+  }, 700);
+
+  /* ---------------------------------------------------------
+     SEGUNDA OLEADA DE ELEMENTOS
+     --------------------------------------------------------- */
+
+  window.setTimeout(() => {
+
+    for (let i = 0; i < 20; i++) {
+
+      window.setTimeout(() => {
+
+        const piece = document.createElement("span");
+
+        piece.className = "celebration-piece";
+
+        piece.textContent =
+          symbols[
+            Math.floor(Math.random() * symbols.length)
+          ];
+
+        piece.style.left =
+          `${Math.random() * 100}vw`;
+
+        piece.style.fontSize =
+          `${0.8 + Math.random() * 1.1}rem`;
+
+        piece.style.setProperty(
+          "--duration",
+          `${3.5 + Math.random() * 2.5}s`
+        );
+
+        piece.style.setProperty(
+          "--drift",
+          `${-200 + Math.random() * 400}px`
+        );
+
+        piece.style.setProperty(
+          "--spin",
+          `${-720 + Math.random() * 1440}deg`
+        );
+
+        overlay.appendChild(piece);
+
+        window.setTimeout(() => {
+          piece.remove();
+        }, 7000);
+
+      }, i * 55);
     }
 
-    setInterval(() => {
-        if (document.visibilityState === "visible") {
-            createParticle({
-                duration: reduced ? 16 + Math.random() * 5 : undefined,
-                opacity: reduced ? .22 + Math.random() * .2 : undefined
-            });
-        }
-    }, reduced ? 2800 : (window.innerWidth < 600 ? 1200 : 800));
+  }, 1300);
+
+  /* ---------------------------------------------------------
+     CERRAR CELEBRACIÓN
+     --------------------------------------------------------- */
+
+  window.setTimeout(() => {
+
+    overlay.classList.remove("show");
+    overlay.classList.remove("impact");
+
+    window.setTimeout(() => {
+
+      overlay.remove();
+
+      celebrationRunning = false;
+
+    }, 700);
+
+  }, 6500);
 }
 
-startAmbientRain();
-
-/* Lluvia especial */
-function celebration() {
-
-    for (let i = 0; i < 65; i++) {
-        setTimeout(() => {
-            createParticle({
-                symbol: ["✿", "❀", "♡", "✧", "🌸"][Math.floor(Math.random() * 5)],
-                className: Math.random() > .35 ? "white" : "rose",
-                size: .7 + Math.random() * 1.4,
-                duration: 5 + Math.random() * 5,
-                opacity: .55 + Math.random() * .4
-            });
-        }, i * 45);
-    }
-
-    document.body.classList.add("celebrating");
-    setTimeout(() => document.body.classList.remove("celebrating"), 2500);
-}
-
-celebrateButton?.addEventListener("click", (event) => {
-    createBurst(event.clientX, event.clientY, 25);
-    celebration();
-});
-
-sparkleButton?.addEventListener("click", (event) => {
-    createBurst(event.clientX, event.clientY, 20);
-    for (let i = 0; i < 22; i++) {
-        setTimeout(() => createParticle({
-            x: 30 + Math.random() * 40,
-            symbol: ["✿", "❀", "♡", "✧"][Math.floor(Math.random() * 4)],
-            size: .7 + Math.random() * 1.1,
-            duration: 5 + Math.random() * 4
-        }), i * 35);
-    }
-});
 
 /* =========================================================
-   EXPLOSIÓN DE ESTRELLAS AL TOCAR
+   BOTÓN — CELEBRAR NUESTRO AÑO
    ========================================================= */
-function createBurst(x, y, amount = 12) {
+console.log("BOTÓN DE CELEBRAR: SCRIPT CARGADO");
+$("#celebrateButton")?.addEventListener(
+  "click",
+  event => {
+    console.log("BOTÓN DE CELEBRAR: CLICK");
+    if (celebrationRunning) return;
+    /* Pequeña explosión desde el botón */
+    createBurst(
+      event.clientX,
+      event.clientY,
+      25
+    );
+    /* Lanzar celebración completa */
+    launchCelebration();
+  }
+);
 
-    const safeX = Number.isFinite(x) ? x : window.innerWidth / 2;
-    const safeY = Number.isFinite(y) ? y : window.innerHeight / 2;
-    const burstSymbols = ["✦", "♡", "✧", "·", "✿"];
 
-    for (let i = 0; i < amount; i++) {
-        const spark = document.createElement("span");
-        spark.className = "spark-burst";
-        spark.textContent = burstSymbols[Math.floor(Math.random() * burstSymbols.length)];
-        spark.style.left = `${safeX}px`;
-        spark.style.top = `${safeY}px`;
-        spark.style.setProperty("--x", `${-90 + Math.random() * 180}px`);
-        spark.style.setProperty("--y", `${-90 + Math.random() * 180}px`);
-        spark.style.animationDelay = `${Math.random() * .08}s`;
-        document.body.appendChild(spark);
-        setTimeout(() => spark.remove(), 1100);
+  /* BASIC SECRET */
+  $("#secretButton")?.addEventListener("click", event => {
+    const message = $("#secretMessage");
+    const button = $("#secretButton");
+    if (!message || !button) return;
+    const open = message.classList.toggle("show");
+    button.textContent = open ? "Cerrar recuerdos privados" : "🔐 Abrir recuerdos privados";
+    if (open) {
+      createBurst(event.clientX, event.clientY, 18);
     }
-}
+  });
 
-/* =========================================================
-   PARALLAX SUAVE DE LAS ESQUINAS FLORALES
-   ========================================================= */
-const floralCorners = document.querySelectorAll(".floral-corner");
-window.addEventListener("mousemove", (event) => {
-    if (window.matchMedia("(hover: none)").matches) return;
+  /* MIDNIGHT SECRET */
+  $("#midnightButton")?.addEventListener("click", event => {
+    const reveal = $("#midnightReveal");
+    const label = $("#midnightButton span");
+    if (!reveal || !label) return;
+    const open = reveal.classList.toggle("show");
+    reveal.setAttribute("aria-hidden", String(!open));
+    label.textContent = open ? "Cerrar nuestro lado secreto" : "Abrir solo si estás lista para sonrojarte";
+    createBurst(event.clientX, event.clientY, open ? 24 : 8);
+    if (open) {
+      window.setTimeout(() => reveal.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" }), 180);
+    }
+  });
 
-    const x = (event.clientX / window.innerWidth - 0.5) * 10;
-    const y = (event.clientY / window.innerHeight - 0.5) * 10;
+  /* LETTER */
+  $("#letterButton")?.addEventListener("click", event => {
+    const content = $("#letterContent");
+    const button = $("#letterButton");
+    if (!content || !button) return;
+    const open = content.classList.toggle("show");
+    button.textContent = open ? "Cerrar carta" : "Abrir carta";
+    if (open) {
+      createBurst(event.clientX, event.clientY, 14);
+      window.setTimeout(() => content.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" }), 120);
+    }
+  });
 
-    floralCorners.forEach((flower, index) => {
-        flower.style.transform = `translate(${x * (index === 0 ? 1 : -1)}px, ${y * (index === 0 ? 1 : -1)}px)`;
+  /* PRIVATE GALLERY */
+  $$(".private-card").forEach(card => {
+    const image = $(".private-image", card);
+    const source = card.dataset.src;
+    if (image && source) {
+      image.addEventListener("load", () => {
+        image.classList.add("ready");
+        card.classList.remove("no-photo");
+      }, { once: true });
+      image.addEventListener("error", () => card.classList.add("no-photo"), { once: true });
+      image.src = source;
+    }
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-open");
+      if (!reducedMotion && card.classList.contains("is-open")) {
+        const rect = card.getBoundingClientRect();
+        createBurst(rect.left + rect.width / 2, rect.top + 40, 10);
+      }
     });
+  });
 
-    if (cursorGlow) {
+  /* QUIZ */
+  const quizCard = $("#quizCard");
+  if (quizCard) {
+    const questions = $$(".quiz-question", quizCard);
+    const progress = $("#quizProgress");
+    const feedback = $("#quizFeedback");
+    const result = $("#quizResult");
+    const replay = $("#quizReplay");
+    let current = 0;
+    let score = 0;
+    const correctFeedback = ["¡Exacto! Sabía que te acordarías.", "Sí. Ni lo dudaste, ¿no?", "Correcto. Presumida."];
+    const incorrectFeedback = ["Casi... pero te quiero igual.", "No era esa, pero linda igual.", "Fallaste, pero con estilo."];
+    function showQuestion(index) {
+      questions.forEach((q, i) => q.hidden = i !== index);
+      if (progress) progress.textContent = `Pregunta ${index + 1} de ${questions.length}`;
+      if (feedback) feedback.textContent = "";
+    }
+    function answer(event) {
+      const button = event.currentTarget;
+      const question = button.closest(".quiz-question");
+      const options = $$(".quiz-option", question);
+      const correct = button.dataset.correct === "true";
+      options.forEach(option => {
+        option.disabled = true;
+        if (option.dataset.correct === "true") option.classList.add("correct");
+        else if (option === button) option.classList.add("incorrect");
+      });
+      if (correct) {
+        score++;
+        const rect = button.getBoundingClientRect();
+        createBurst(rect.left + rect.width / 2, rect.top, 8);
+      }
+      if (feedback) {
+        const pool = correct ? correctFeedback : incorrectFeedback;
+        feedback.textContent = pool[Math.floor(Math.random() * pool.length)];
+      }
+      window.setTimeout(() => {
+        current++;
+        if (current < questions.length) showQuestion(current);
+        else {
+          questions.forEach(q => q.hidden = true);
+          if (progress) progress.textContent = `${score}/${questions.length} correctas`;
+          if (feedback) feedback.textContent = "";
+          if (result) result.hidden = false;
+        }
+      }, 1050);
+    }
+    questions.forEach(q => $$(".quiz-option", q).forEach(option => option.addEventListener("click", answer)));
+    replay?.addEventListener("click", () => {
+      current = 0;
+      score = 0;
+      questions.forEach(q => $$(".quiz-option", q).forEach(option => {
+        option.disabled = false;
+        option.classList.remove("correct", "incorrect");
+      }));
+      if (result) result.hidden = true;
+      showQuestion(0);
+    });
+  }
+
+  /* POINTER DETAILS */
+  if (!reducedMotion && !touchDevice) {
+    window.addEventListener("pointermove", event => {
+      const x = (event.clientX / innerWidth - .5) * 6;
+      const y = (event.clientY / innerHeight - .5) * 6;
+      $$(".floral-corner-left").forEach(el => el.style.transform = `translate(${x}px,${y}px)`);
+      $$(".floral-corner-right").forEach(el => el.style.transform = `translate(${-x}px,${-y}px)`);
+      if (cursorGlow) {
         cursorGlow.style.left = `${event.clientX}px`;
         cursorGlow.style.top = `${event.clientY}px`;
-    }
-});
+      }
+    }, { passive: true });
 
-/* =========================================================
-   BOTONES MAGNÉTICOS EN DESKTOP
-   ========================================================= */
-if (!prefersReducedMotion && !window.matchMedia("(hover: none)").matches) {
-    document.querySelectorAll(".main-button, .final-button, .secret-button").forEach((button) => {
-        button.addEventListener("mousemove", (event) => {
-            const rect = button.getBoundingClientRect();
-            const dx = (event.clientX - (rect.left + rect.width / 2)) * .08;
-            const dy = (event.clientY - (rect.top + rect.height / 2)) * .08;
-            button.style.transform = `translate(${dx}px, ${dy}px)`;
-        });
-
-        button.addEventListener("mouseleave", () => {
-            button.style.transform = "";
-        });
+    $$(".memory-card,.reason-card,.flower-card,.food-card").forEach(card => {
+      card.addEventListener("pointermove", event => {
+        if (event.pointerType === "touch") return;
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        card.style.transform = `perspective(900px) rotateX(${y * -2}deg) rotateY(${x * 2}deg) translateY(-4px)`;
+      });
+      card.addEventListener("pointerleave", () => card.style.transform = "");
     });
-}
+  }
 
-/* =========================================================
-   FOTOS FALLIDAS
-   ========================================================= */
-document.querySelectorAll("img").forEach((image) => {
-    image.addEventListener("error", () => {
-        if (image.src.includes("/img/")) {
-            image.style.display = "none";
-            image.parentElement?.classList.add("missing-photo");
-        }
-    });
-});
-
-/* =========================================================
-   PEQUEÑOS DETALLES TÁCTILES
-   ========================================================= */
-document.querySelectorAll(".reason-card, .flower-card, .food-card, .timeline-card").forEach((card) => {
-    card.addEventListener("pointerdown", (event) => {
-        if (window.matchMedia("(hover: none)").matches && !prefersReducedMotion) {
-            createBurst(event.clientX, event.clientY, 5);
-        }
-    });
-});
-
-/* =========================================================
-   MICRO-MOVIMIENTO DE TARJETAS
-   ========================================================= */
-if (!prefersReducedMotion) {
-    document.querySelectorAll(".reason-card, .flower-card, .food-card, .timeline-card").forEach((card) => {
-        card.addEventListener("pointermove", (event) => {
-            if (event.pointerType === "touch") return;
-            const rect = card.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - .5;
-            const y = (event.clientY - rect.top) / rect.height - .5;
-            card.style.transform = `perspective(900px) rotateX(${y * -3}deg) rotateY(${x * 3}deg) translateY(-7px)`;
-        });
-        card.addEventListener("pointerleave", () => { card.style.transform = ""; });
-    });
-}
-
-/* =========================================================
-   QUIZ — ¿CUÁNTO ME CONOCES?
-   ========================================================= */
-const quizCard = document.getElementById("quizCard");
-
-if (quizCard) {
-    const quizQuestions = Array.from(quizCard.querySelectorAll(".quiz-question"));
-    const quizProgress = document.getElementById("quizProgress");
-    const quizFeedback = document.getElementById("quizFeedback");
-    const quizResult = document.getElementById("quizResult");
-    const quizReplay = document.getElementById("quizReplay");
-    const totalQuestions = quizQuestions.length;
-    let currentQuestion = 0;
-    let correctCount = 0;
-
-    const correctFeedback = [
-        "¡Exacto! Sabía que te acordarías.",
-        "Sí. Ni lo dudaste, ¿no?",
-        "Correcto. Presumida."
-    ];
-    const incorrectFeedback = [
-        "Casi... pero te quiero igual.",
-        "No era esa, pero linda igual.",
-        "Fallaste, pero con estilo."
-    ];
-
-    function showQuestion(index) {
-        quizQuestions.forEach((question, i) => {
-            question.hidden = i !== index;
-        });
-        if (quizProgress) {
-            quizProgress.textContent = `Pregunta ${index + 1} de ${totalQuestions}`;
-        }
-        if (quizFeedback) quizFeedback.textContent = "";
-    }
-
-    function handleAnswer(event) {
-        const button = event.currentTarget;
-        const questionEl = button.closest(".quiz-question");
-        const options = questionEl.querySelectorAll(".quiz-option");
-        const isCorrect = button.dataset.correct === "true";
-
-        options.forEach((option) => {
-            option.disabled = true;
-            if (option.dataset.correct === "true") {
-                option.classList.add("correct");
-            } else if (option === button) {
-                option.classList.add("incorrect");
-            }
-        });
-
-        if (isCorrect) {
-            correctCount += 1;
-            if (!prefersReducedMotion) {
-                const rect = button.getBoundingClientRect();
-                createBurst(rect.left + rect.width / 2, rect.top, 10);
-            }
-        }
-
-        if (quizFeedback) {
-            const pool = isCorrect ? correctFeedback : incorrectFeedback;
-            quizFeedback.textContent = pool[Math.floor(Math.random() * pool.length)];
-        }
-
-        setTimeout(() => {
-            currentQuestion += 1;
-            if (currentQuestion < totalQuestions) {
-                showQuestion(currentQuestion);
-            } else {
-                quizQuestions.forEach((question) => { question.hidden = true; });
-                if (quizProgress) quizProgress.textContent = "";
-                if (quizFeedback) quizFeedback.textContent = "";
-                if (quizResult) quizResult.hidden = false;
-            }
-        }, 1100);
-    }
-
-    quizQuestions.forEach((question) => {
-        question.querySelectorAll(".quiz-option").forEach((option) => {
-            option.addEventListener("click", handleAnswer);
-        });
-    });
-
-    if (quizReplay) {
-        quizReplay.addEventListener("click", () => {
-            currentQuestion = 0;
-            correctCount = 0;
-            quizQuestions.forEach((question) => {
-                question.querySelectorAll(".quiz-option").forEach((option) => {
-                    option.disabled = false;
-                    option.classList.remove("correct", "incorrect");
-                });
-            });
-            if (quizResult) quizResult.hidden = true;
-            showQuestion(0);
-        });
-    }
-}
+  updateScrollProgress();
+  document.documentElement.classList.add("js-ready");
+})();

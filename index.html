@@ -1,648 +1,565 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="365 días de nosotros — un pequeño rincón para Bet.">
-    <title>Bet & Yo — 365 días contigo</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="365 días de nosotros — un pequeño rincón para Bet.">
+  <meta name="theme-color" content="#5b456b">
+  <title>Bet & Isai — 365 días contigo</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
-    <!-- CAPAS DECORATIVAS GLOBALES -->
-    <div class="ambient-background" aria-hidden="true"></div>
-    <div class="particle-layer" id="particleLayer" aria-hidden="true"></div>
-    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-    <button class="music-orbit" id="sparkleButton" type="button" aria-label="Crear una lluvia de flores">✦</button>
-    <div class="floating-quote" id="floatingQuote" aria-hidden="true">hecho para ti ♡</div>
+  <div class="ambient-background" aria-hidden="true"></div>
+  <div class="particle-layer" id="particleLayer" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<nav class="navbar navbar-expand-lg fixed-top site-nav" aria-label="Navegación principal">
+    <div class="container-xl">
+      <a class="navbar-brand" href="#inicio">Bet <span>♥</span> Isai</a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
+          <li class="nav-item"><a class="nav-link" href="#lugares">Lugares</a></li>
+          <li class="nav-item"><a class="nav-link" href="#playlist">Playlist</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeria">Recuerdos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#carta">Carta</a></li>
+          <li class="nav-item"><a class="nav-link nav-special" href="#nuestro-secreto">Solo tú ♡</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- INTRO / HERO -->
-    <header class="hero" id="inicio">
-        <div class="floral-corner floral-corner-left" aria-hidden="true"><span>✿</span><i>❀</i><b>✧</b></div>
-        <div class="floral-corner floral-corner-right" aria-hidden="true"><span>❀</span><i>✿</i><b>✧</b></div>
-        <div class="floral-sprinkle sprinkle-one"></div>
-        <div class="floral-sprinkle sprinkle-two"></div>
-
-        <div class="hero-orbit orbit-a" aria-hidden="true">✿</div>
-        <div class="hero-orbit orbit-b" aria-hidden="true">♡</div>
-        <div class="hero-orbit orbit-c" aria-hidden="true">✧</div>
-        <div class="hero-content">
-            <div class="hero-kicker">PARA LA PERSONA QUE HIZO ESTE AÑO ESPECIAL</div>
-            <p class="eyebrow">30.08.2025 — 30.08.2026</p>
-            <h1>Bet <span>♥</span> Yo</h1>
-            <p class="hero-subtitle">365 días contigo.</p>
-            <p class="hero-text">
-                Hice este pequeño lugar para contarte, de principio a fin,
-                la historia de este primer año nuestro.
-            </p>
-
-            <button class="main-button magnetic-button" id="startButton">
-                <span class="button-shine"></span>
-                Entrar a nuestra historia
-                <span>↓</span>
-            </button>
-            <div class="scroll-hint"><span></span> desliza para descubrir</div>
+  <header class="hero d-flex align-items-center" id="inicio">
+    <div class="hero-orbit orbit-a" aria-hidden="true">✿</div>
+    <div class="hero-orbit orbit-b" aria-hidden="true">♡</div>
+    <div class="hero-orbit orbit-c" aria-hidden="true">✧</div>
+    <div class="floral-corner floral-corner-left" aria-hidden="true">✿</div>
+    <div class="floral-corner floral-corner-right" aria-hidden="true">❀</div>
+    <div class="container-xl position-relative">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 col-xl-8 text-center hero-content">
+          <p class="hero-kicker">PARA LA PERSONA QUE HIZO ESTE AÑO ESPECIAL</p>
+          <p class="eyebrow">30.08.2025 — 30.08.2026</p>
+          <h1>Bet <span>♥</span> Isai</h1>
+          <p class="hero-subtitle">365 días contigo.</p>
+          <p class="hero-text mx-auto">Hice este pequeño lugar para contarte, de principio a fin, la historia de este primer año nuestro.</p>
+          <button class="main-button" id="startButton" type="button">Entrar a nuestra historia <span>↓</span></button>
+          <div class="scroll-hint"><span></span>desliza para descubrir</div>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
+  <main>
+    <section class="section counter-section reveal" aria-labelledby="contador-title">
+      <div class="container-xl">
+        <div class="section-heading text-center mx-auto">
+          <p class="eyebrow">Desde aquel día</p>
+          <h2 id="contador-title">El tiempo a tu lado se siente diferente.</h2>
+            <p>Cada segundo que pasa contigo es un regalo. Me fascina saber que en pocos dias sera 1 año ya de esta hermosa relacion, y que no parara hasta los 100 años.</p>
+        </div>
+        <div class="counter-card row g-0 mx-auto">
+          <div class="counter-item col-6 col-md-3"><strong id="days">365</strong><span>días</span></div>
+          <div class="counter-item col-6 col-md-3"><strong id="hours">00</strong><span>horas</span></div>
+          <div class="counter-item col-6 col-md-3"><strong id="minutes">00</strong><span>minutos</span></div>
+          <div class="counter-item col-6 col-md-3"><strong id="seconds">00</strong><span>segundos</span></div>
+        </div>
+        <p class="soft-text text-center">Y todavía quiero seguir contando.</p>
+      </div>
+    </section>
 
-        <!-- CONTADOR -->
-        <section class="section counter-section reveal">
-            <div class="counter-orbits" aria-hidden="true"><span>♡</span><span>✦</span><span>❀</span></div>
-            <div class="section-heading">
-                <p class="eyebrow">Desde aquel día</p>
-                <h2>El tiempo contigo se siente diferente.</h2>
+    <section class="section story-section reveal" id="historia">
+      <div class="container-xl">
+        <div class="section-heading">
+          <p class="eyebrow">Capítulo uno · Antes de nosotros</p>
+          <h2>Nos conocimos sin saber lo que venía.</h2>
+          <p>Una clase de matemáticas, varios dias viendonos de reojo, conversaciones que poco a poco dejaron de ser solo de amigos, hablabamos a diario como 2 confidentes de toda la vida.</p>
+        </div>
+        <div class="row g-4">
+          <article class="col-12 col-lg-4">
+            <div class="memory-card h-100"><span class="timeline-number">01</span>
+              <p class="timeline-date">Primer Año de UTP</p>
+              <h3>Dos desconocidos</h3>
+              <p>Tan solo viendonos de reojo en alguna clase, miradas de intriga por esa persona, sin saber que ambos sentiamos algo por el otro.</p>
+              <div class="desc-photos"> 
+                <div class="desc-photo"> 
+                  <img src="assets/img/historia/desconocidos-01.jfif" alt="Foto iconica de bet que bella es" > 
+                </div> 
+                <div class="desc-photo" id="desconocido-2"> 
+                  <img src="assets/img/historia/desconocidos-02.jpeg" alt="Foto mia de cuando empezamos a hablar ese año" > 
+                </div> 
+              </div> 
             </div>
+          </article>
+          <article class="col-12 col-lg-4">
+            <div class="memory-card featured h-100"><span class="timeline-number">02</span>
+              <p class="timeline-date">Tercer ciclo</p>
+              <h3>Dos veces por semana.</h3>
+              <p>Compartíamos cursos, nos veíamos en la universidad y hablábamos prácticamente todo el día, compartiendo nuestro pasado y sueños a futuro.</p>
+              <div class="desc-photos"> 
+                <div class="desc-photo" id="tercer-ciclo-1"> 
+                  <img src="assets/img/historia/tercer-ciclo-1.jpeg" alt="Nuestro primer momento en tercer ciclo" > 
+                </div> 
+                <div class="desc-photo" id="tercer-ciclo-2"> 
+                  <img src="assets/img/historia/tercer-ciclo-2.jfif" alt="Nuestro segundo momento en tercer ciclo" > 
+                </div> 
+                <div class="desc-photo" id="tercer-ciclo-3"> 
+                  <img src="assets/img/historia/tercer-ciclo-3.png" alt="Nuestro tercer momento en tercer ciclo" > 
+                </div> 
+                <div class="desc-photo" id="tercer-ciclo-4"> 
+                  <img src="assets/img/historia/tercer-ciclo-4.png" alt="Nuestro cuarto momento en tercer ciclo" > 
+                </div> 
+              </div> 
+            </div>
+          </article>
+          <article class="col-12 col-lg-4">
+            <div class="memory-card h-100"><span class="timeline-number">03</span>
+              <p class="timeline-date">30 de agosto de 2025</p>
+              <h3>Y de repente sucedio.</h3>
+              <p>Yo ya sabía cual era la respuesta, pero eso no impidio que este muy nervioso de que tu seas mi primera relacion.</p>
+              <div class="desc-photo"> 
+                  <img src="assets/img/historia/quieres_ser_mi_novia.jfif" alt="El dia que te propuse ser mi enamorada" > 
+                </div> 
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="counter-card">
-                <div class="counter-item">
-                    <strong id="days">365</strong>
-                    <span>días</span>
+    <section class="love-section reveal">
+      <div class="container-xl">
+        <div class="love-card mx-auto text-center">
+          <div class="love-symbol">♥</div>
+          <p class="eyebrow">Capítulo dos · 30 / 08 / 2025</p>
+          <h2>Nuestro comienzo.</h2>
+          <p>Se que ya sabíamos lo que sentíamos antes de ese día. Pero igual, fue un choque de emociones tratar de decirte:</p>
+          <strong>“Quieres ser mi novia?”</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal necklace-section">
+      <div class="container-xl">
+        <div class="row align-items-center g-5">
+          <div class="col-12 col-lg-6 split-text">
+            <p class="eyebrow">Una pequeña promesa</p>
+            <h2>Nuestras iniciales. Nuestra fecha. Nuestra historia.</h2>
+            <p>Ese collar se convirtió en una pequeña forma de llevar con nosotros el día en que empezamos a ser nosotros.</p>
+            <div class="mini-note"><span>30.08.2025</span><span>♡</span></div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="collar-photo">
+              <img src="assets/img/collar/collar-1.jfif" alt="Collar con nuestras iniciales y fecha de aniversario">
+            </div>
+            <div class="collar-photo">
+              <img src="assets/img/collar/collar-2.jpeg" alt="Collar con nuestras iniciales y fecha de aniversario">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section places-section reveal" id="lugares">
+      <div class="container-xl">
+        <div class="section-heading">
+          <p class="eyebrow">Capítulo tres · Nuestro mapa</p>
+          <h2>Los lugares que ahora nos pertenecen.</h2>
+          <p>Cada ciudad tiene miles de calles, pero solo algunas se convirtieron en parte de nuestra historia.</p>
+        </div>
+        <div class="row g-3">
+          <article class="col-12 col-sm-6 col-xl-3">
+            <div class="place-card h-100" id="universidad">
+              <img src="assets/img/lugares/lugares-1.jpeg" alt="Foto de la universidad donde nos conocimos">
+              <span class="place-tag">Donde todo empezó</span>
+              <h3>La universidad UTP</h3>
+              <p>El lugar que, sin planearlo, nos terminó juntando, y dejando hacer cositas a espaldas del SAE.</p>
+            </div>
+          </article>
+          <article class="col-12 col-sm-6 col-xl-3">
+            <div class="place-card h-100">
+              <img src="assets/img/lugares/lugares-2.jfif" alt="Foto de un lugar que nos gusta mucho">
+              <span class="place-tag">Nuestro clásico</span>
+              <h3>Parque San Juan</h3>
+              <p>Ese bendito lugar que desde el primer mes siempre visitamos, nos ayuda a dar paz y donde tantas veces me obsequiaste hermosos detalles.</p>
+            </div>
+          </article>
+          <article class="col-12 col-sm-6 col-xl-3">
+            <div class="place-card h-100">
+              <img src="assets/img/lugares/lugares-3.jfif" alt="Foto de la primera vez que fuimos juntos">
+              <span class="place-tag">La primera gran salida</span>
+              <h3>Dia de flores amarrillas</h3>
+              <p>Ese dia tan maravilloso que recuerdo con cariño, verte tan feliz con los girasoles que habia pedido unos dias antes como recado.</p>
+            </div>
+          </article>
+          <article class="col-12 col-sm-6 col-xl-3">
+            <div class="place-card h-100">
+              <img src="assets/img/lugares/lugares-4.jfif" alt="Foto del lugar soñado">
+              <span class="place-tag">Juntos en todo lugar</span>
+              <h3>Al supermercado, al cine, a comer, donde sea</h3>
+              <p>Si el destino es contigo me basta y sobra para aceptar ir a donde sea mi amor.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="concert-section reveal" id="concierto">
+      <div class="container-xl">
+        <div class="row align-items-center g-5">
+          <div class="col-12 col-lg-5 concert-copy"><span class="street-label">A veces pensamos que antes LA VIDA ERA MAS CORTA</span>
+            <p class="eyebrow mt-4">Nuestro artista que amamos</p>
+            <h2>Milo J<br><span>en Lima.</span></h2>
+            <p>Fuimos juntos al estadio nacional, y experimentamos una de nuestras mejores noches, aunque a coste de que sufran nuestras piernas jsjs, pero valio la pena, si es que contigo pude cantar la gloriosa cancion de Carencias de Cordura, porque son tus simples defectos que te hacen ser una ternura mi amor.</p>
+            <div class="concert-date">LIMA · 2026</div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="concert-photo">
+              <img src="assets/img/concierto/concierto-1.jfif" alt="Foto de nosotros en el concierto de Milo J">
+            </div>
+            <div class="concert-photo">
+              <img src="assets/img/concierto/concierto-2.jfif" alt="Foto de nosotros en el concierto de Milo J">
+            </div>
+            <div class="concert-photo">
+              <img src="assets/img/concierto/concierto-3.jpeg" alt="Foto de nosotros en el concierto de Milo J">
+            </div>
+            <div class="concert-photo">
+              <video src="assets/img/concierto/concierto-4.mp4" playsinline controls></video>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section playlist-section reveal" id="playlist">
+      <div class="container-xl">
+        <div class="section-heading">
+          <p class="eyebrow">Nuestra banda sonora, ampliada</p>
+          <h2>Si esta historia tuviera playlist, sonaría así.</h2>
+          <p>Tendriamos el pop en nuestra sangre, eso incluye el k-pop no?</p>
+        </div>
+        <ol class="playlist list-unstyled mb-0">
+          <li><span class="track-index">01</span>
+            <div><strong>Carencia de Cordura</strong><small>Milo J — la que sonaba en el unico concierto al que fuimos</small></div><em>nuestra</em>
+          </li>
+          <li><span class="track-index">02</span>
+            <div><strong>This is Love</strong><small>Super Junior — es la top de nuestra relacion actualmente jaja</small></div><em>road trip</em>
+          </li>
+          <li><span class="track-index">03</span>
+            <div><strong>Enigmatica</strong><small>Maldito Antisocial — esta cancion la llevo escuchando desde antes de ser pareja, y te describe tan bien mi amor.</small></div><em>para ti</em>
+          </li>
+          <li><span class="track-index">04</span>
+            <div><strong>Contigo</strong><small>Los Panchos — se lo mucho que ahnelas escucharla cuando nos casemos</small></div><em>Bet's pick</em>
+          </li>
+          <li><span class="track-index">05</span>
+            <div><strong>Still Monster</strong><small>Enhypen — de las pocas canciones que llegue a escuchar de tu grupo favorito, solo por tener tema de conversacion, y si me termino gustando 4 de los 12 que me enviaste ese dia.</small></div><em>Bet's pick</em>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section reveal reasons-section">
+      <div class="container-xl">
+        <div class="section-heading">
+          <p class="eyebrow">Pequeñas cosas</p>
+          <h2>Hay muchas razones por las que te amo.</h2>
+          <p>Estas son solo algunas de las cientas.</p>
+        </div>
+        <div class="row g-4">
+          <article class="col-12 col-md-6 col-xl-4">
+            <div class="reason-card h-100">
+              <img src="assets/img/cosas/cosas-1.jpeg" alt="Foto de Bet sonriendo" class="reason-photo">
+              <h3>Tu forma de iluminar mis días.</h3>
+              <p>Por ti despertar dejo de ser una carga, solo para ahnelar verte</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 col-xl-4">
+            <div class="reason-card h-100">
+              <img src="assets/img/cosas/cosas-2.jpeg" alt="Foto de Bet con un gesto gracioso" class="reason-photo">
+              <h3>Que te guste comer tanto como a mí.</h3>
+              <p>Especialmente si hay tallarín verde de por medio.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 col-xl-4">
+            <div class="reason-card h-100">
+              <img src="assets/img/cosas/cosas-3.jfif" alt="Foto de Bet con un gesto gracioso" class="reason-photo">
+              <h3>Perder el tiempo juegando.</h3>
+              <p>El que pases tiempo a mi lado en una de las actividades principales de mi niñez me fascina.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 col-xl-4">
+            <div class="reason-card h-100">
+              <img src="assets/img/cosas/cosas-4.jfif" alt="Foto de Bet con polo de milo j" class="reason-photo">
+              <h3>Que cumplas mis caprichos</h3>
+              <p>Sabes lo loco que llego a ser y que aun asi aceptes cumplirlos nos hace aun mas locos.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 col-xl-4">
+            <div class="reason-card h-100">
+              <img src="assets/img/cosas/cosas-5.jfif" alt="Foto de Bet chistosa" class="reason-photo">
+              <h3>Que sigas mis travesuras.</h3>
+              <p>como decirte betsi algunas veces o que te haga bromitas, asi como mi bet juguetona, entre risas nos comprendemos.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 col-xl-4">
+            <div class="reason-card h-100">
+              <img src="assets/img/cosas/cosas-6.jfif" alt="Foto de Bet siendo ella" class="reason-photo">
+              <h3>Tu manera de ser tú.</h3>
+              <p>La razón más sencilla y probablemente la más importante, que seas tu y solo tú.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="flower-section reveal">
+      <div class="container-xl">
+        <div class="section-heading">
+          <p class="eyebrow">Si fueras una flor</p>
+          <h2>Probablemente serías todas.</h2>
+        </div>
+        <div class="row g-4">
+          <article class="col-12 col-md-4">
+            <div class="flower-card h-100">
+              <img src="assets/img/flores/flor-1.jfif" alt="Flores blancas" class="flor-photo">
+              <h3>Lluvia blanca</h3>
+              <p>Pequeña, delicada y capaz de llenar todo un espacio.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-4">
+            <div class="flower-card h-100">
+              <img src="assets/img/flores/flores-2.webp" alt="Flores Purpuras" class="flor-photo">
+              <h3>Lluvia morada</h3>
+              <p>Porque hay algo en ti que siempre hace todo un poquito más bonito.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-4">
+            <div class="flower-card h-100">
+              <img src="assets/img/flores/flores-3.webp" alt="flores de Girasol" class="flor-photo">
+              <h3>Girasoles</h3>
+              <p>Porque tienes esa costumbre de traer luz incluso sin intentarlo.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section food-section reveal">
+      <div class="container-xl">
+        <div class="section-heading text-center mx-auto">
+          <p class="eyebrow">Nuestro verdadero lenguaje del amor</p>
+          <h2>El amor también se come.</h2>
+        </div>
+        <div class="row g-4">
+          <article class="col-12 col-md-4">
+            <div class="food-card h-100">
+              <img src="assets/img/comidas/comida-1.jpeg" alt="Foto de comida con Bet" class="food-photo">
+              <h3>Almuerzos juntos</h3>
+              <p>La fritura es nuestra debilidad.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-4">
+            <div class="food-card h-100">
+              <img src="assets/img/comidas/comida-2.jpeg" alt="Foto de comida con Bet" class="food-photo">
+              <h3>Pizzas</h3>
+              <p>No olvidar como estuvimos un par de meses pizza y pizza eh.</p>
+            </div>
+          </article>
+          <article class="col-12 col-md-4">
+            <div class="food-card h-100">
+              <img src="assets/img/comidas/comida-3.jpeg" alt="Foto de comida con Bet" class="food-photo">
+              <h3>Comidaaa</h3>
+              <p>Burritos, causa, tacos..., canchita, lo que sea yico.</p>
+            </div>
+          </article>
+        </div>
+        <img src="assets/img/comidas/comida-4.jpeg" alt="Foto de comida con Bet" class="food-photo-main">
+        <p class="food-joke">Dicen que el amor entra por los ojos... contigo también entra con buena carne suave, el descubrir y disfrutar de la lucha, es nuestro preferido.</p>
+      </div>
+    </section>
+
+    <section class="floral-break reveal">
+      <div class="container-xl">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-md-5">
+            <img src="assets/img/flores/salida-de-flores.jfif" alt="Foto bonita de bet y de mi" class="flor-photo">
+          </div>
+          <div class="col-12 col-md-7">
+            <p class="eyebrow">Entre recuerdo y recuerdo</p>
+            <h2>Como pequeñas flores que aparecen sin avisar.</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section reveal" id="galeria">
+      <div class="container-xl">
+        <div class="section-heading">
+          <p class="eyebrow">365 recuerdos</p>
+          <h2>Un año en fotografías.</h2>
+          <p>Aquí se almacenan algunas de las fotos mas epic de nosotros.</p>
+        </div>
+        <div class="row g-3 gallery">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="gallery-item tall">
+              <img src="assets/img/galeria/galeria-1.jfif" alt="Una risa nuestra" class="gallery-photo">
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="gallery-item">
+              <img src="assets/img/galeria/galeria-2.jfif" alt="Una selfie" class="gallery-photo">
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="gallery-item">
+              <img src="assets/img/galeria/galeria-3.jfif" alt="Universidad" class="gallery-photo">
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="gallery-item wide">
+              <img src="assets/img/galeria/galeria-4.jfif" alt="Una comida juntos" class="gallery-photo">
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="gallery-item">
+              <img src="assets/img/galeria/galeria-5.jfif" alt="Milo J" class="gallery-photo">
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="gallery-item">
+              <img src="assets/img/galeria/galeria-6.jfif" alt="La Bet más Betsi" class="gallery-photo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section reveal" id="quiz">
+      <div class="container-xl">
+        <div class="section-heading text-center mx-auto">
+          <p class="eyebrow">Un pequeño receso</p>
+          <h2>¿Qué tanto me conoces?</h2>
+        </div>
+        <div class="quiz-card mx-auto" id="quizCard">
+          <div class="quiz-progress"><span id="quizProgress">Pregunta 1 de 3</span></div>
+          <div class="quiz-question" data-question="1">
+            <h3>¿Cuál es mi comida favorita de las dos?</h3>
+            <div class="quiz-options"><button type="button" class="quiz-option" data-correct="true">Tallarín verde</button><button type="button" class="quiz-option">Lomo Saltado</button></div>
+          </div>
+          <div class="quiz-question" data-question="2" hidden>
+            <h3>En que mes conocimos nuestros cuerpos?</h3>
+            <div class="quiz-options"><button type="button" class="quiz-option">Diciembre</button><button type="button" class="quiz-option" data-correct="true">Noviembre</button></div>
+          </div>
+          <div class="quiz-question" data-question="3" hidden>
+            <h3>Cual fue la cancion con la que cerro milo j el concierto?</h3>
+            <div class="quiz-options"><button type="button" class="quiz-option" data-correct="true">Milagrosa</button><button type="button" class="quiz-option">No hago Trap</button></div>
+          </div>
+          <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+          <div class="quiz-result" id="quizResult" hidden>
+            <h3>Sin importar el puntaje, gano yo.</h3>
+            <p>Porque el premio de conocerte ya me lo gané este año.</p><button type="button" class="secret-button" id="quizReplay">Jugar de nuevo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="universe-section reveal" id="universo">
+      <div class="container-xl">
+        <div class="universe-content text-center mx-auto">
+          <p class="eyebrow">Capítulo especial</p>
+          <h2>Hay un universo entero escondido en nosotros.</h2>
+          <p>Entre clases, comidas, películas, conciertos, bromas y momentos que solo nosotros entendemos, terminamos construyendo algo que no se parece a ninguna otra historia.</p>
+          <div class="orbit-memory">♡ ✦ ❀ ∞</div>
+          <div class="universe-pills"><span>nuestras risas</span><span>nuestros códigos</span><span>nuestras locuras</span><span>nuestros planes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="letter-section reveal" id="carta">
+      <div class="container-xl">
+        <div class="letter-card mx-auto text-center">
+          <div class="envelope-icon">✉</div>
+          <p class="eyebrow">Tengo algo más que decirte</p>
+          <h2>Una carta para ti.</h2>
+          <p>Esta carta sí es para ti. Sin plantillas, sin adornos innecesarios. Solo nosotros.</p><button class="main-button" id="letterButton" type="button">Abrir carta</button>
+        </div>
+        <div class="letter-content mx-auto" id="letterContent">
+          <p class="letter-date">30 de agosto de 2026</p>
+          <h3>Para mi Bet:</h3>
+          <p>Mi amor, después de todo este año solamente puedo pensar en lo bonito que ha sido compartir mi vida contigo.</p>
+          <p>Gracias por cada conversación, cada salida, cada comida, cada risa y cada momento que terminó convirtiéndose en un recuerdo nuestro.</p>
+          <p>Feliz primer año, Bet. Espero que este sea solamente el primero de muchísimos capítulos juntos.</p>
+          <p class="letter-signature">Con amor,<br>Isai. ❤️</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="midnight-section reveal" id="nuestro-secreto">
+      <div class="container-xl">
+        <div class="midnight-content mx-auto text-center">
+          <p class="eyebrow">Solo para tus ojos</p><span class="secret-lock">♡</span>
+          <h2>Lo que se queda entre nosotros dos.</h2>
+          <p>Esta parte no es para nadie más. Aquí van las fotos y recuerdos que solamente nosotros sabemos, de esos que no debe haber espias, si no, los silenciamos.</p><button class="midnight-button" id="midnightButton" type="button"><span>Abrir solo si estás lista para sonrojarte</span><b>✦</b></button>
+          <div class="midnight-reveal" id="midnightReveal" aria-hidden="true">
+            <p class="whisper">psst... revisa que nadie ams te vea el celular</p>
+            <h3>Contigo se me olvida hasta la hora.</h3>
+            <p>Hay una versión de nosotros que solo existe cuando nadie más está mirando: en señas de pasion, en momentos donde sabemos amarnos aun si no es en 4 paredes y en esa sonrisa tuya que ya sé leer de memoria.</p>
+            <div class="private-gallery" aria-label="Nuestro secreto">
+              <article class="private-card no-photo" data-src="assets/img/private/secreto-1.jfif"><img class="private-image" alt="Foto secreta 1">
+                <div class="private-placeholder">
+                  <div><strong>01 · Prohibida para terceros, miradas fuera</strong><span>Toca para revelar</span></div>
                 </div>
-                <div class="counter-item">
-                    <strong id="hours">00</strong>
-                    <span>horas</span>
+                <div class="private-caption">Esta definitivamente no sale de aquí. 🔐</div>
+              </article>
+              <article class="private-card no-photo" data-src="assets/img/private/secreto-2.jfif"><img class="private-image" alt="Foto secreta 2">
+                <div class="private-placeholder">
+                  <div><strong>02 · La evidencia</strong><span>Toca para revelar</span></div>
                 </div>
-                <div class="counter-item">
-                    <strong id="minutes">00</strong>
-                    <span>minutos</span>
+                <div class="private-caption">Antes eramos muy locos, incontrolables, repetimos?.</div>
+              </article>
+              <article class="private-card no-photo" data-src="assets/img/private/secreto-3.jfif"><img class="private-image" alt="Foto secreta 3">
+                <div class="private-placeholder">
+                  <div><strong>03 · No preguntes</strong><span>Toca para revelar</span></div>
                 </div>
-                <div class="counter-item">
-                    <strong id="seconds">00</strong>
-                    <span>segundos</span>
+                <div class="private-caption">Nadie puede ver esa foto mas que yo muajaja</div>
+              </article>
+              <article class="private-card no-photo" data-src="assets/img/private/secreto-4.jfif"><img class="private-image" alt="Foto secreta 4">
+                <div class="private-placeholder">
+                  <div><strong>04 · Cierre la puerta</strong><span>Toca para revelar</span></div>
                 </div>
+                <div class="private-caption">Que no se entere tu familia, tu verdaero hinchaje❤️</div>
+              </article>
             </div>
+            <div class="secret-orbit">♥ ✦ ♡</div><small>cierra esta parte con una sonrisa... tú sabes por qué.</small>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <p class="soft-text">Y todavía quiero seguir contando.</p>
-        </section>
+    <section class="final-section" id="final">
+      <div class="container-xl">
+        <div class="final-content text-center">
+          <p class="eyebrow">30.08.2025 → 30.08.2026</p>
+          <h2>Feliz primer año,<br><span>Bet. ♥</span></h2>
+          <p>365 días contigo y todavía quiero seguir contando.</p><button class="final-button" id="celebrateButton" type="button">Celebrar nuestro año ✨</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- CAPÍTULO 1: ANTES DE NOSOTROS -->
-        <section class="section story-section reveal" id="historia">
-            <div class="story-stars" aria-hidden="true"></div>
-            <div class="section-heading">
-                <p class="eyebrow">Capítulo uno · Antes de nosotros</p>
-                <h2>Nos conocimos sin saber lo que venía.</h2>
-                <p>
-                    Una clase de matemáticas, varios cursos juntos y conversaciones
-                    que poco a poco dejaron de sentirse como conversaciones de amigos.
-                </p>
-            </div>
+  <footer>
+    <div class="footer-heart">♥</div>Hecho con amor para Bet · 30.08.2026
+  </footer>
 
-            <div class="timeline">
-                <article class="timeline-card">
-                    <span class="timeline-number">01</span>
-                    <p class="timeline-date">Primer ciclo</p>
-                    <h3>Introducción a las Matemáticas</h3>
-                    <p>
-                        Ahí empezó todo, aunque todavía ninguno de los dos
-                        tenía idea de lo importante que terminaría siendo.
-                    </p>
-                    <!-- FOTO: coloca aquí una foto de la universidad o una foto antigua de ustedes. -->
-                    <div class="photo-placeholder">
-                        <span>📷</span>
-                        Foto de nuestros primeros días
-                    </div>
-                </article>
-
-                <article class="timeline-card featured">
-                    <span class="timeline-number">02</span>
-                    <p class="timeline-date">Tercer ciclo</p>
-                    <h3>Dos veces por semana.</h3>
-                    <p>
-                        Compartíamos cursos, nos veíamos en la universidad
-                        y hablábamos prácticamente todo el día.
-                    </p>
-                    <!-- FOTO: idealmente una foto de ustedes cuando todavía eran amigos. -->
-                    <div class="photo-placeholder">
-                        <span>📷</span>
-                        Una foto de aquella época
-                    </div>
-                </article>
-
-                <article class="timeline-card">
-                    <span class="timeline-number">03</span>
-                    <p class="timeline-date">30 de agosto de 2025</p>
-                    <h3>Y entonces pasó.</h3>
-                    <p>
-                        Yo ya sabía cuál quería que fuera tu respuesta,
-                        pero eso no hizo que estuviera menos nervioso.
-                    </p>
-                    <!-- FOTO: coloca aquí una foto de la primera salida solos o del día de la declaración. -->
-                    <div class="photo-placeholder">
-                        <span>📷</span>
-                        El comienzo de nosotros
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO 2: LA DECLARACIÓN -->
-        <section class="love-section reveal">
-            <div class="love-card">
-                <div class="love-symbol">♥</div>
-                <p class="eyebrow">Capítulo dos · 30 / 08 / 2025</p>
-                <h2>Nuestro comienzo.</h2>
-                <p>
-                    Quizá ya sabíamos lo que sentíamos antes de ese día.
-                    Pero igual quería vivir el momento de decirte:
-                </p>
-                <strong>“Quiero estar contigo.”</strong>
-            </div>
-        </section>
-
-        <!-- COLLAR / LA PROMESA -->
-        <section class="section reveal necklace-section">
-            <div class="section-sparkles" aria-hidden="true"></div>
-            <div class="split-section">
-                <div class="split-text">
-                    <p class="eyebrow">Una pequeña promesa</p>
-                    <h2>Nuestras iniciales. Nuestra fecha. Nuestra historia.</h2>
-                    <p>
-                        Ese collar se convirtió en una pequeña forma de llevar
-                        con nosotros el día en que empezamos a ser nosotros.
-                    </p>
-                    <div class="mini-note">
-                        <span>30.08.2025</span>
-                        <span>♡</span>
-                    </div>
-                </div>
-
-                <div class="image-frame portrait">
-                    <!-- FOTO: coloca aquí una foto del collar, de ambos llevándolo o de sus manos. -->
-                    <div class="photo-placeholder large">
-                        <span>📷</span>
-                        Foto del collar
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO 3: LOS LUGARES -->
-        <section class="section places-section reveal" id="lugares">
-            <div class="places-constellation" aria-hidden="true"></div>
-            <div class="section-heading">
-                <p class="eyebrow">Capítulo tres · Nuestro mapa</p>
-                <h2>Los lugares que ahora nos pertenecen.</h2>
-                <p>
-                    Cada ciudad tiene miles de calles, pero solo algunas
-                    se convirtieron en parte de nuestra historia.
-                </p>
-            </div>
-
-            <!-- LUGARES: edita el nombre, la etiqueta y la descripción de cada uno con sus propios lugares. -->
-            <div class="places-grid">
-                <article class="place-card">
-                    <span class="place-pin">📍</span>
-                    <span class="place-tag">Donde todo empezó</span>
-                    <h3>La universidad</h3>
-                    <p>El lugar que, sin planearlo, nos terminó juntando.</p>
-                </article>
-                <article class="place-card">
-                    <span class="place-pin">📍</span>
-                    <span class="place-tag">Nuestro clásico</span>
-                    <h3>Ese lugar al que siempre volvemos</h3>
-                    <p>Reemplaza esto con ese sitio al que van una y otra vez.</p>
-                </article>
-                <article class="place-card">
-                    <span class="place-pin">📍</span>
-                    <span class="place-tag">La primera vez</span>
-                    <h3>Nuestra primera salida real</h3>
-                    <p>Aquí puedes contar dónde fue y por qué la recuerdas tanto.</p>
-                </article>
-                <article class="place-card">
-                    <span class="place-pin">📍</span>
-                    <span class="place-tag">El lugar soñado</span>
-                    <h3>A donde todavía queremos ir</h3>
-                    <p>Ese viaje o lugar que sigue pendiente en la lista de los dos.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- MILO J -->
-        <section class="concert-section reveal" id="concierto">
-            <div class="concert-grid">
-                <div class="concert-copy">
-                    <span class="street-label">OUR MEMORY // 01</span>
-                    <p class="eyebrow">Nuestra banda sonora</p>
-                    <h2>Milo J<br><span>en Lima.</span></h2>
-                    <p>
-                        No tenemos una canción oficialmente nuestra,
-                        pero sí tenemos un artista que terminó formando
-                        parte de nuestra historia.
-                    </p>
-                    <div class="concert-date">LIMA · 2026</div>
-                </div>
-
-                <div class="concert-photo">
-                    <!-- FOTO: coloca aquí la mejor foto de ustedes durante el concierto. -->
-                    <div class="photo-placeholder dark">
-                        <span>📷</span>
-                        Foto del concierto
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NUESTRA PLAYLIST -->
-        <section class="section playlist-section reveal" id="playlist">
-            <div class="section-heading">
-                <p class="eyebrow">Nuestra banda sonora, ampliada</p>
-                <h2>Si esta historia tuviera playlist, sonaría así.</h2>
-                <p>Cámbialas por las canciones que de verdad son suyas.</p>
-            </div>
-
-            <!-- PLAYLIST: reemplaza cada título/artista y la nota con sus canciones reales. -->
-            <ol class="playlist">
-                <li class="playlist-track">
-                    <span class="track-index">01</span>
-                    <div class="track-info">
-                        <strong>Nombre de la canción</strong>
-                        <span>Artista — la que sonaba en el concierto</span>
-                    </div>
-                    <span class="track-note">nuestra</span>
-                </li>
-                <li class="playlist-track">
-                    <span class="track-index">02</span>
-                    <div class="track-info">
-                        <strong>Nombre de la canción</strong>
-                        <span>Artista — la que escuchan en el carro</span>
-                    </div>
-                    <span class="track-note">road trip</span>
-                </li>
-                <li class="playlist-track">
-                    <span class="track-index">03</span>
-                    <div class="track-info">
-                        <strong>Nombre de la canción</strong>
-                        <span>Artista — la que le pusiste una vez y no se te olvidó</span>
-                    </div>
-                    <span class="track-note">para ti</span>
-                </li>
-                <li class="playlist-track">
-                    <span class="track-index">04</span>
-                    <div class="track-info">
-                        <strong>Nombre de la canción</strong>
-                        <span>Artista — su canción de K-pop favorita de ella</span>
-                    </div>
-                    <span class="track-note">Bet's pick</span>
-                </li>
-            </ol>
-        </section>
-
-        <!-- COSAS QUE AMO -->
-        <section class="section reveal reasons-section">
-            <div class="floating-blooms" aria-hidden="true"><span>✿</span><span>❀</span><span>✧</span><span>♡</span></div>
-            <div class="section-heading">
-                <p class="eyebrow">Pequeñas cosas</p>
-                <h2>Hay muchas razones por las que te quiero.</h2>
-                <p>Estas son solo algunas.</p>
-            </div>
-
-            <div class="reasons-grid">
-                <article class="reason-card">
-                    <div class="card-photo small-flower-photo"><!-- FOTO DE INTERNET/TUYA: una flor o una foto de Bet con flores. --><img src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Flores blancas delicadas"></div>
-                    <h3>Tu forma de iluminar mis días.</h3>
-                    <p>Como un girasol, pero versión Bet.</p>
-                </article>
-
-                <article class="reason-card">
-                    <div class="card-photo"><!-- FOTO TUYA: tallarín verde que hayan compartido. --><img src="assets/img/comida-tallarin-verde.jpg" alt="Nuestro tallarín verde"></div>
-                    <h3>Que te guste comer tanto como a mí.</h3>
-                    <p>Especialmente si hay tallarín verde de por medio.</p>
-                </article>
-
-                <article class="reason-card">
-                    <div class="card-photo"><!-- FOTO TUYA: ustedes viendo una película o una salida al cine. --><img src="assets/img/foto-pelicula.jpg" alt="Una película juntos"></div>
-                    <h3>Ver películas contigo.</h3>
-                    <p>A veces importa más con quién se ve que qué película es.</p>
-                </article>
-
-                <article class="reason-card">
-                    <div class="card-photo"><!-- FOTO TUYA: Bet relacionada con K-pop. --><img src="assets/img/bet-kpop.jpg" alt="Bet y sus gustos"></div>
-                    <h3>Tu obsesión con el K-pop.</h3>
-                    <p>Y sí, ya acepté que Enhypen es parte del paquete.</p>
-                </article>
-
-                <article class="reason-card">
-                    <div class="card-photo"><!-- FOTO TUYA: la foto más graciosa de Bet. --><img src="assets/img/bet-betsi.jpg" alt="Una foto divertida de Bet"></div>
-                    <h3>Decirte “Betsi”.</h3>
-                    <p>Sé que no te gusta. Precisamente por eso me da risa.</p>
-                </article>
-
-                <article class="reason-card">
-                    <div class="card-photo"><!-- FOTO TUYA: una foto espontánea de Bet. --><img src="assets/img/bet-espontanea.jpg" alt="Bet"></div>
-                    <h3>Tu manera de ser tú.</h3>
-                    <p>La razón más sencilla y probablemente la más importante.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- FLORES / JARDÍN -->
-        <section class="flower-section reveal garden-section">
-            <div class="garden-sky" aria-hidden="true"></div>
-            <div class="garden-fireflies" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="garden-vines" aria-hidden="true"><span>🌿</span><span>🌿</span></div>
-            <div class="section-heading">
-                <p class="eyebrow">Si fueras una flor</p>
-                <h2>Probablemente serías todas.</h2>
-            </div>
-
-            <div class="flowers">
-                <article class="flower-card white-flower">
-                    <div class="flower-image"><!-- FOTO DE INTERNET: lluvia blanca --><img src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Lluvia blanca"></div>
-                    <h3>Lluvia blanca</h3>
-                    <p>Pequeña, delicada y capaz de llenar todo un espacio.</p>
-                </article>
-
-                <article class="flower-card purple-flower">
-                    <div class="flower-image"><!-- FOTO TUYA/INTERNET: lluvia morada --><img src="assets/img/lluvia-morada.jpg" alt="Lluvia morada"></div>
-                    <h3>Lluvia morada</h3>
-                    <p>Porque hay algo en ti que siempre hace todo un poquito más bonito.</p>
-                </article>
-
-                <article class="flower-card sunflower">
-                    <div class="flower-image"><!-- FOTO TUYA/INTERNET: girasol --><img src="assets/img/girasol.jpg" alt="Girasoles"></div>
-                    <h3>Girasoles</h3>
-                    <p>Porque tienes esa costumbre de traer luz incluso sin intentarlo.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- COMIDA -->
-        <section class="section food-section reveal">
-            <div class="food-particles" aria-hidden="true"><span>✦</span><span>♡</span><span>✦</span><span>❀</span><span>·</span></div>
-            <div class="section-heading">
-                <p class="eyebrow">Nuestro verdadero lenguaje del amor</p>
-                <h2>El amor también se come.</h2>
-            </div>
-
-            <div class="food-grid">
-                <article class="food-card">
-                    <div class="card-photo"><!-- FOTO TUYA: tallarín verde que hayan compartido. --><img src="assets/img/comida-tallarin-verde.jpg" alt="Nuestro tallarín verde"></div>
-                    <h3>Tallarín verde</h3>
-                    <p>Favorito de los dos.</p>
-                </article>
-                <article class="food-card">
-                    <div class="card-photo"><!-- FOTO TUYA: pollo con papas o una comida frita que hayan disfrutado. --><img src="assets/img/comida-pollo-papas.jpg" alt="Pollo y papas"></div>
-                    <h3>Pollo + papas</h3>
-                    <p>Una combinación que nunca falla.</p>
-                </article>
-                <article class="food-card">
-                    <div class="card-photo"><!-- FOTO TUYA: burrito, causa, tacos o comida rellena. --><img src="assets/img/comida-rellena.jpg" alt="Nuestra comida favorita"></div>
-                    <h3>Algo relleno</h3>
-                    <p>Burritos, causa, tacos... tú elige.</p>
-                </article>
-            </div>
-
-            <!-- FOTO: puedes colocar aquí una foto divertida de Bet comiendo o una foto de una comida especial. -->
-            <div class="food-photo photo-placeholder">
-                <span>📷</span>
-                Nuestra foto gastronómica más nosotros
-            </div>
-
-            <p class="food-joke">Dicen que el amor entra por los ojos... contigo también entra con pollo y papas.</p>
-        </section>
-
-        <!-- DETALLE FLORAL -->
-        <section class="floral-break reveal">
-            <img src="https://images.pexels.com/photos/15724963/pexels-photo-15724963.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Flores blancas de lluvia">
-            <div>
-                <p class="eyebrow">Entre recuerdo y recuerdo</p>
-                <h2>Como pequeñas flores que aparecen sin avisar.</h2>
-            </div>
-        </section>
-
-        <!-- GALERÍA -->
-        <section class="section gallery-section reveal">
-            <div class="gallery-stars" aria-hidden="true"></div>
-            <div class="section-heading">
-                <p class="eyebrow">365 recuerdos</p>
-                <h2>Un año en fotografías.</h2>
-                <p>
-                    Aquí puedes llenar la página con todas esas fotos que
-                    no quieres que se queden solamente en tu galería.
-                </p>
-            </div>
-
-            <div class="gallery">
-                <!-- FOTO: una foto espontánea donde ambos estén riéndose. -->
-                <div class="gallery-item big"><div class="photo-placeholder"><span>📷</span>Una risa nuestra</div></div>
-                <!-- FOTO: una selfie bonita de ambos. -->
-                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>Una selfie</div></div>
-                <!-- FOTO: una foto relacionada con la universidad. -->
-                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>Universidad</div></div>
-                <!-- FOTO: una comida compartida. -->
-                <div class="gallery-item wide"><div class="photo-placeholder"><span>📷</span>Una comida juntos</div></div>
-                <!-- FOTO: una foto del concierto. -->
-                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>Milo J</div></div>
-                <!-- FOTO: una foto graciosa de Bet. -->
-                <div class="gallery-item"><div class="photo-placeholder"><span>📷</span>La Bet más Betsi</div></div>
-            </div>
-        </section>
-
-        <!-- ¿CUÁNTO ME CONOCES? -->
-        <section class="section quiz-section reveal" id="quiz">
-            <div class="section-heading">
-                <p class="eyebrow">Un pequeño receso</p>
-                <h2>¿Qué tanto me conoces?</h2>
-                <p>Edítalo con tus propias preguntas y respuestas. No hay forma de perder.</p>
-            </div>
-
-            <div class="quiz-card" id="quizCard">
-                <div class="quiz-progress"><span id="quizProgress">Pregunta 1 de 3</span></div>
-
-                <!-- QUIZ: cambia las preguntas, opciones y la opción correcta (data-correct="true") por las tuyas. -->
-                <div class="quiz-question" data-question="1">
-                    <h3>¿Cuál es mi comida favorita de las dos?</h3>
-                    <div class="quiz-options">
-                        <button type="button" class="quiz-option" data-correct="true">Tallarín verde</button>
-                        <button type="button" class="quiz-option">Pollo con papas</button>
-                    </div>
-                </div>
-
-                <div class="quiz-question" data-question="2" hidden>
-                    <h3>¿En qué ciclo empezamos a hablar más?</h3>
-                    <div class="quiz-options">
-                        <button type="button" class="quiz-option">Primer ciclo</button>
-                        <button type="button" class="quiz-option" data-correct="true">Tercer ciclo</button>
-                    </div>
-                </div>
-
-                <div class="quiz-question" data-question="3" hidden>
-                    <h3>¿Qué artista fuimos a ver en concierto?</h3>
-                    <div class="quiz-options">
-                        <button type="button" class="quiz-option" data-correct="true">Milo J</button>
-                        <button type="button" class="quiz-option">Otro artista</button>
-                    </div>
-                </div>
-
-                <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
-
-                <div class="quiz-result" id="quizResult" hidden>
-                    <h3>Sin importar el puntaje, gano yo.</h3>
-                    <p>Porque el premio de conocerte ya me lo gané este año.</p>
-                    <button type="button" class="secret-button" id="quizReplay">Jugar de nuevo</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO: NUESTRO UNIVERSO -->
-        <section class="universe-section reveal" id="universo">
-            <div class="universe-stars" aria-hidden="true"></div>
-            <div class="universe-content">
-                <p class="eyebrow">Capítulo especial</p>
-                <h2>Hay un universo entero escondido en nosotros.</h2>
-                <p>
-                    Entre clases, comidas, películas, conciertos, bromas y momentos que solo nosotros entendemos,
-                    terminamos construyendo algo que no se parece a ninguna otra historia.
-                </p>
-                <div class="orbit-memory" aria-hidden="true">
-                    <span>♡</span><span>✦</span><span>❀</span><span>∞</span>
-                </div>
-                <div class="universe-pills">
-                    <span>nuestras risas</span>
-                    <span>nuestros códigos</span>
-                    <span>nuestras locuras</span>
-                    <span>nuestros planes</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECRETOS PEQUEÑOS -->
-        <section class="secret-section reveal">
-            <div class="secret-ambient" aria-hidden="true"><span>♡</span><span>✦</span><span>♡</span><span>✧</span></div>
-            <div class="secret-card">
-                <p class="eyebrow">Solo nosotros</p>
-                <h2>Hay recuerdos que no necesitan una foto.</h2>
-                <p>
-                    Algunos lugares, algunas escapadas y algunas noches
-                    se quedan mejor guardados entre dos personas.
-                </p>
-
-                <button class="secret-button" id="secretButton">Abrir nuestro secreto</button>
-
-                <div class="secret-message" id="secretMessage">
-                    <div class="card-photo"><!-- FOTO TUYA: una foto espontánea de Bet. --><img src="assets/img/bet-espontanea.jpg" alt="Bet"></div>
-                    <p>
-                        Hay historias que no voy a poner aquí.
-                        Algunas son solamente nuestras.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CARTA -->
-        <section class="letter-section reveal">
-            <div class="heart-background" aria-hidden="true"><span>♥</span></div>
-            <div class="letter-petals" aria-hidden="true"><i>❀</i><i>✿</i><i>♡</i><i>❀</i><i>✧</i></div>
-            <div class="letter-card">
-                <div class="envelope-icon"><!-- FOTO/DETALLE: una foto de una carta o detalle para ella. --><img src="assets/img/carta.jpg" alt="Una carta para Bet"></div>
-                <p class="eyebrow">Tengo algo más que decirte</p>
-                <h2>Una carta para ti.</h2>
-                <p>
-                    Esta parte la vamos a llenar con tus propias palabras.
-                    No quiero que sea una carta genérica: quiero que sea
-                    exactamente lo que tú quieres decirle.
-                </p>
-                <button class="main-button" id="letterButton">Abrir carta</button>
-            </div>
-
-            <div class="letter-content" id="letterContent">
-                <p class="letter-date">30 de agosto de 2026</p>
-                <h3>Para mi Bet:</h3>
-
-                <!-- CARTA: reemplaza este texto por tu carta personal. -->
-                <p>
-                    Mi amor, después de todo este año solamente puedo pensar
-                    en lo bonito que ha sido compartir mi vida contigo.
-                </p>
-                <p>
-                    Gracias por cada conversación, cada salida, cada comida,
-                    cada risa y cada momento que terminó convirtiéndose
-                    en un recuerdo nuestro.
-                </p>
-                <p>
-                    Feliz primer año, Bet. Espero que este sea solamente
-                    el primero de muchísimos capítulos juntos.
-                </p>
-
-                <p class="letter-signature">Con amor,<br>yo. ❤️</p>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO ÍNTIMO -->
-        <section class="midnight-section reveal" id="nuestro-secreto">
-            <div class="midnight-glow midnight-glow-one" aria-hidden="true"></div>
-            <div class="midnight-glow midnight-glow-two" aria-hidden="true"></div>
-            <div class="midnight-content">
-                <p class="eyebrow">Solo para tus ojos</p>
-                <span class="secret-lock">♡</span>
-                <h2>Lo que se queda entre nosotros dos.</h2>
-                <p class="midnight-intro">
-                    Esta parte no es para nadie más. Es para esas miradas que duran
-                    un poco más de lo necesario, para esa complicidad que se nos nota
-                    hasta cuando intentamos disimularla, y para todo lo que preferimos
-                    guardar para cuando estamos a solas.
-                </p>
-
-                <button class="midnight-button" id="midnightButton" type="button">
-                    <span>Abrir solo si estás lista para sonrojarte</span>
-                    <b>✦</b>
-                </button>
-
-                <!-- ZONA ÍNTIMA: este es tu espacio para personalizarlo con tus propias palabras, fotos o detalles. Mantenlo sugerente y tierno, a tu gusto. -->
-                <div class="midnight-reveal" id="midnightReveal" aria-hidden="true">
-                    <p class="whisper">psst... cierra la puerta antes de seguir leyendo</p>
-                    <h3>Contigo se me olvida hasta la hora.</h3>
-                    <p>
-                        Hay una versión de nosotros que solo existe cuando nadie más está mirando:
-                        la que se queda en silencios largos, en la piel un poco más cerca de lo normal
-                        y en esa sonrisa tuya que ya sé leer perfecto cuando algo se te ocurrió.
-                    </p>
-                    <p>
-                        No necesito contarle a nadie nuestras locuras. Me basta con saber que, de todo
-                        este año, esos son los minutos que más rápido se me pasan contigo.
-                    </p>
-                    <div class="secret-orbit" aria-hidden="true"><span>♥</span><i>✦</i><b>♡</b></div>
-                    <small>cierra esta parte con una sonrisa... tú sabes por qué.</small>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO: FUTURO -->
-        <section class="future-section reveal">
-            <div class="future-card">
-                <p class="eyebrow">Lo que todavía falta</p>
-                <h2>Este año fue solo el prólogo.</h2>
-                <div class="future-road">
-                    <div><span>01</span><strong>más viajes</strong><small>lugares que todavía no conocemos</small></div>
-                    <div><span>02</span><strong>más conciertos</strong><small>más canciones para recordar</small></div>
-                    <div><span>03</span><strong>más locuras</strong><small>porque contigo nunca faltan</small></div>
-                    <div><span>∞</span><strong>mucho más nosotros</strong><small>esa es mi parte favorita</small></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FINAL -->
-        <section class="final-section" id="final">
-            <div class="final-content">
-                <p class="eyebrow">30.08.2025 → 30.08.2026</p>
-                <h2>Feliz primer año,<br><span>Bet. ♥</span></h2>
-                <p>365 días contigo y todavía quiero seguir contando.</p>
-
-                <button class="final-button" id="celebrateButton">
-                    Celebrar nuestro año ✨
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="footer-heart">♥</div>
-        Hecho con amor para Bet · 30.08.2026
-    </footer>
-
-    <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
+
 </html>
